@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "..\\contensis-management-api"
+		},
+		{
+			"path": "..\\contensis-delivery-api"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}
