@@ -1,3 +1,5 @@
+export * from './Asset';
+export * from './AssetSys';
 export * from './ClientError';
 export * from './ClientParams';
 export * from './ContentType';

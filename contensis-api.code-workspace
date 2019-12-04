@@ -1,10 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "..\\contensis-management-api"
+			"path": "../contensis-management-api"
 		},
 		{
-			"path": "..\\contensis-delivery-api"
+			"path": "../contensis-delivery-api"
 		},
 		{
 			"path": "."
