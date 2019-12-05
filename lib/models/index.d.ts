@@ -1,5 +1,4 @@
-export * from './Asset';
-export * from './AssetSys';
+export * from './AssetUpload';
 export * from './ClientError';
 export * from './ClientParams';
 export * from './ContentType';
@@ -14,6 +13,7 @@ export * from './PagedList';
 export * from './PageOptions';
 export * from './Project';
 export * from './ResponseHandler';
+export * from './SysAssetFile';
 export * from './UrlFn';
 export * from './VersionInfo';
 export * from './VersionStatus';
