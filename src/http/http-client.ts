@@ -37,7 +37,9 @@ export class HttpClient implements IHttpClient {
 				if (response.ok) {
 					return response
 						.text()
-						.then(text => !!text && text.length && text.length > 0 ? JSON.parse(text) : {});
+						.then(text => {
+							return !!text && text.length && text.length > 0 ? JSON.parse(text) : {};
+						});
 				}
 
 				let responseHandlerFunction: ResponseHandlerFunction = null;
@@ -60,7 +62,9 @@ export class HttpClient implements IHttpClient {
 
 				return response
 					.text()
-					.then(text => !!text && text.length && text.length > 0 ? JSON.parse(text) : {})
+					.then(text => {
+						return !!text && text.length && text.length > 0 ? JSON.parse(text) : {};
+					})
 					.then(
 						responseJson => {
 							clientError.data = responseJson;

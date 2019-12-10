@@ -31,7 +31,9 @@ var HttpClient = /** @class */ (function () {
             if (response.ok) {
                 return response
                     .text()
-                    .then(function (text) { return !!text && text.length && text.length > 0 ? JSON.parse(text) : {}; });
+                    .then(function (text) {
+                    return !!text && text.length && text.length > 0 ? JSON.parse(text) : {};
+                });
             }
             var responseHandlerFunction = null;
             if (!!params.responseHandler) {
@@ -50,7 +52,9 @@ var HttpClient = /** @class */ (function () {
             };
             return response
                 .text()
-                .then(function (text) { return !!text && text.length && text.length > 0 ? JSON.parse(text) : {}; })
+                .then(function (text) {
+                return !!text && text.length && text.length > 0 ? JSON.parse(text) : {};
+            })
                 .then(function (responseJson) {
                 clientError.data = responseJson;
                 return !!responseHandlerFunction ?

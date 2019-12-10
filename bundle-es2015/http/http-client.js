@@ -30,7 +30,9 @@ export class HttpClient {
             if (response.ok) {
                 return response
                     .text()
-                    .then(text => !!text && text.length && text.length > 0 ? JSON.parse(text) : {});
+                    .then(text => {
+                    return !!text && text.length && text.length > 0 ? JSON.parse(text) : {};
+                });
             }
             let responseHandlerFunction = null;
             if (!!params.responseHandler) {
@@ -49,7 +51,9 @@ export class HttpClient {
             };
             return response
                 .text()
-                .then(text => !!text && text.length && text.length > 0 ? JSON.parse(text) : {})
+                .then(text => {
+                return !!text && text.length && text.length > 0 ? JSON.parse(text) : {};
+            })
                 .then(responseJson => {
                 clientError.data = responseJson;
                 return !!responseHandlerFunction ?
