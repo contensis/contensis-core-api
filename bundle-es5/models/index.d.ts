@@ -1,6 +1,7 @@
 export * from './AssetUpload';
 export * from './ClientError';
 export * from './ClientParams';
+export * from './Component';
 export * from './ContentType';
 export * from './Editor';
 export * from './Entry';
