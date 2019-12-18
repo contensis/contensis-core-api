@@ -5,7 +5,8 @@ export interface ClientParams {
 	projectId: string;
 	accessToken?: string;
 	clientId?: string;
-    clientSecret?: string;
+	clientSecret?: string;
+	defaultHeaders?: { [key: string]: string };
 	language?: string;
 	versionStatus?: VersionStatus;
 	pageIndex?: number;
