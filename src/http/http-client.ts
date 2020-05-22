@@ -3,8 +3,9 @@ import { isBrowser } from '../utils';
 
 export class HttpClient implements IHttpClient {
 
-	constructor(private paramsProvider: IParamsProvider) {
-
+	constructor(
+		private paramsProvider: IParamsProvider,
+		private fetchFn: (input: RequestInfo, init?: RequestInit) => Promise<Response>) {
 	}
 
 	request<T>(url: string, request: RequestInit = {}): Promise<T> {
@@ -41,7 +42,7 @@ export class HttpClient implements IHttpClient {
 		}
 
 		const requestUrl = isRelativeRequestUrl ? `${url}` : `${params.rootUrl}${url}`;
-		return fetch(requestUrl, request)
+		return this.fetchFn(requestUrl, request)
 			.then((response) => {
 				if (response.ok) {
 					return response

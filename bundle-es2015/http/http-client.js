@@ -1,7 +1,8 @@
 import { isBrowser } from '../utils';
 export class HttpClient {
-    constructor(paramsProvider) {
+    constructor(paramsProvider, fetchFn) {
         this.paramsProvider = paramsProvider;
+        this.fetchFn = fetchFn;
     }
     request(url, request = {}) {
         let params = this.paramsProvider.getParams();
@@ -33,7 +34,7 @@ export class HttpClient {
             });
         }
         const requestUrl = isRelativeRequestUrl ? `${url}` : `${params.rootUrl}${url}`;
-        return fetch(requestUrl, request)
+        return this.fetchFn(requestUrl, request)
             .then((response) => {
             if (response.ok) {
                 return response

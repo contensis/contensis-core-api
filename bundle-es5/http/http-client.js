@@ -1,7 +1,8 @@
 import { isBrowser } from '../utils';
 var HttpClient = /** @class */ (function () {
-    function HttpClient(paramsProvider) {
+    function HttpClient(paramsProvider, fetchFn) {
         this.paramsProvider = paramsProvider;
+        this.fetchFn = fetchFn;
     }
     HttpClient.prototype.request = function (url, request) {
         if (request === void 0) { request = {}; }
@@ -34,7 +35,7 @@ var HttpClient = /** @class */ (function () {
             });
         }
         var requestUrl = isRelativeRequestUrl ? "" + url : "" + params.rootUrl + url;
-        return fetch(requestUrl, request)
+        return this.fetchFn(requestUrl, request)
             .then(function (response) {
             if (response.ok) {
                 return response
