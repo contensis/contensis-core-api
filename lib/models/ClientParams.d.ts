@@ -1,11 +1,12 @@
 import { VersionStatus } from './VersionStatus';
 import { ResponseHandler } from './ResponseHandler';
+import { ClientGrantType, ClientGrants } from './ClientGrants';
 export interface ClientParams {
     rootUrl: string;
     projectId: string;
     accessToken?: string;
-    clientId?: string;
-    clientSecret?: string;
+    clientDetails?: ClientGrants;
+    clientType?: ClientGrantType;
     defaultHeaders?: {
         [key: string]: string;
     };
