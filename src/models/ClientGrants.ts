@@ -1,7 +1,6 @@
 import { ClientCredentialsGrant } from './ClientCredentialsGrant';
-import { ClientPasswordGrant } from './ClientPasswordGrant';
-import { ClientTokenGrant } from './ClientTokenGrant';
+import { ClientClassicGrant } from './ClientClassicGrant';
 
-export type ClientGrantType = 'client_credentials' | 'password' | 'token' | 'none';
+export type ClientGrantType = 'client_credentials' | 'classic' | 'none';
 
-export type ClientGrants = ClientCredentialsGrant | ClientPasswordGrant | ClientTokenGrant;
+export type ClientGrants = ClientCredentialsGrant | ClientClassicGrant;

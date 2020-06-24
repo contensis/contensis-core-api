@@ -19,8 +19,11 @@ export class HttpClient {
         if (!headers.accessToken && !!params.accessToken) {
             headers.accessToken = params.accessToken;
         }
-        if (params.clientType === "none" || headers.accessToken) {
-            throw new Error('If the client type is set to "none" than an accessToken value must be provided.');
+        if (params.clientType === "none" && !headers.accessToken) {
+            throw new Error(`If the property clientType is set to "${params.clientType}" then the property accessToken must be provided.`);
+        }
+        if (params.clientType === 'client_credentials' && !params.clientDetails) {
+            throw new Error(`If the property client type is set to "${params.clientType}" then the property clientDetails must be set to a ClientCredentialsGrant value.`);
         }
         if (!!params.defaultHeaders) {
             const keys = Object.keys(params.defaultHeaders);

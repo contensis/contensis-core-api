@@ -1,4 +1,4 @@
-import { IParamsProvider, ClientError, ResponseHandlerFunction, IHttpClient } from '../models';
+import { IParamsProvider, ClientError, ResponseHandlerFunction, IHttpClient, ClientCredentialsGrant } from '../models';
 import { isBrowser } from '../utils';
 
 export class HttpClient implements IHttpClient {
@@ -27,8 +27,12 @@ export class HttpClient implements IHttpClient {
 			headers.accessToken = params.accessToken;
 		}
 
-		if(params.clientType === "none" || headers.accessToken) {			
-			throw new Error('If the client type is set to "none" than an accessToken value must be provided.');
+		if(params.clientType === "none" && !headers.accessToken) {			
+			throw new Error(`If the property clientType is set to "${params.clientType}" then the property accessToken must be provided.`);
+		}
+
+		if(params.clientType === 'client_credentials' && !(params.clientDetails as ClientCredentialsGrant)) {			
+			throw new Error(`If the property client type is set to "${params.clientType}" then the property clientDetails must be set to a ClientCredentialsGrant value.`);
 		}
 
 		if (!!params.defaultHeaders) {
