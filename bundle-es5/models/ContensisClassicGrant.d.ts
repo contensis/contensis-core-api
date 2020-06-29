@@ -1,4 +1,4 @@
-export interface ClientClassicGrant {
+export interface ContensisClassicGrant {
     username: string;
     password: string;
 }

@@ -14,6 +14,8 @@ export declare function isBrowser(): boolean;
  * http://msdn.microsoft.com/en-us/library/ie/cc196988(v=vs.85).aspx
  */
 export declare function isIE(): boolean;
+/** Checks if the runtime context is Node.js */
+export declare function isNodejs(): boolean;
 export declare let defaultMapperForLanguage: MapperFn;
 export declare let defaultMapperForPublishedVersionStatus: MapperFn;
 export declare let defaultMapperForLatestVersionStatus: MapperFn;

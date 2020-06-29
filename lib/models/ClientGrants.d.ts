@@ -1,4 +1,4 @@
 import { ClientCredentialsGrant } from './ClientCredentialsGrant';
-import { ClientClassicGrant } from './ClientClassicGrant';
-export declare type ClientGrantType = 'client_credentials' | 'classic' | 'none';
-export declare type ClientGrants = ClientCredentialsGrant | ClientClassicGrant;
+import { ContensisClassicGrant } from './ContensisClassicGrant';
+export declare type ClientGrantType = 'client_credentials' | 'contensis_classic' | 'none';
+export declare type ClientGrants = ClientCredentialsGrant | ContensisClassicGrant;
