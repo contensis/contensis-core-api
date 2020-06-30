@@ -4,6 +4,7 @@ export * from './ClientError';
 export * from './ClientGrants';
 export * from './ClientParams';
 export * from './ContensisClassicGrant';
+export * from './ContensisClassicResfreshTokenGrant';
 export * from './Component';
 export * from './ContensisQuery';
 export * from './ContensisQueryFactory';
