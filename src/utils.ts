@@ -1,4 +1,5 @@
 import { MapperFn, ClientParams, VersionStatus } from './models';
+import * as isNode from 'detect-node';
 
 export function hasProp(o: any, key: string) {
 	return !!o && typeof o[key] !== 'undefined';
@@ -26,7 +27,6 @@ export function isBrowser(): boolean {
 	return typeof window !== 'undefined';
 }
 
-
 /**
  * Checks if the current browser is IE.
  *
@@ -39,6 +39,11 @@ export function isIE(): boolean {
 	msie = (window && window.document && (window.document as any).documentMode) ? (window.document as any).documentMode : null;
 
 	return !!msie && msie <= 11;
+}
+
+/** Checks if the runtime context is Node.js */
+export function isNodejs() : boolean{
+	return isNode;
 }
 
 export let defaultMapperForLanguage: MapperFn = (value: string, options: any, params: ClientParams) =>

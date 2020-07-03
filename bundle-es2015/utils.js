@@ -1,3 +1,4 @@
+import * as isNode from 'detect-node';
 export function hasProp(o, key) {
     return !!o && typeof o[key] !== 'undefined';
 }
@@ -29,6 +30,10 @@ export function isIE() {
     let msie; // holds major version number for IE, or NaN if UA is not IE.
     msie = (window && window.document && window.document.documentMode) ? window.document.documentMode : null;
     return !!msie && msie <= 11;
+}
+/** Checks if the runtime context is Node.js */
+export function isNodejs() {
+    return isNode;
 }
 export let defaultMapperForLanguage = (value, options, params) => !value && !!params ? params.language : value;
 export let defaultMapperForPublishedVersionStatus = (value, options, params) => (value === 'published') ? null : value;
