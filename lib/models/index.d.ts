@@ -1,6 +1,6 @@
 export * from './AssetUpload';
 export * from './ClientCredentialsGrant';
-export * from './ClientError';
+export * from './errors';
 export * from './ClientGrants';
 export * from './ClientParams';
 export * from './ContensisClassicGrant';
