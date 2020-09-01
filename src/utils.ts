@@ -42,7 +42,7 @@ export function isIE(): boolean {
 }
 
 /** Checks if the runtime context is Node.js */
-export function isNodejs() : boolean{
+export function isNodejs(): boolean {
 	return isNode;
 }
 

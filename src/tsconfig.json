@@ -20,8 +20,7 @@
 		"noUnusedLocals": true,	
 		"declaration": true,
 		"outDir": "../bundle-es5",
-		"types": [
-			"jasmine"
+		"types": [			
 		]
 	},
 	"exclude": [

@@ -1,4 +1,4 @@
-import { ResponseContext } from "./ResponseContext";
+import { ResponseContext } from './ResponseContext';
 
 export type ResponseHandlerFunction = (response: Response, context: ResponseContext) => any;
 

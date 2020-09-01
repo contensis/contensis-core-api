@@ -27,7 +27,7 @@ export class HttpClient implements IHttpClient {
 			headers.accessToken = params.accessToken;
 		}
 
-		if (params.clientType === "none" && !headers.accessToken) {
+		if (params.clientType === 'none' && !headers.accessToken) {
 			throw new Error(`If the property clientType is set to "${params.clientType}" then the property accessToken must be provided.`);
 		}
 
