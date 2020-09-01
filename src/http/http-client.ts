@@ -1,4 +1,4 @@
-import { IParamsProvider, ClientError, ResponseHandlerFunction, IHttpClient, ClientCredentialsGrant } from '../models';
+import { IParamsProvider, ResponseContext, ResponseHandlerFunction, IHttpClient, ClientCredentialsGrant } from '../models';
 import { isBrowser } from '../utils';
 
 export class HttpClient implements IHttpClient {
@@ -27,11 +27,11 @@ export class HttpClient implements IHttpClient {
 			headers.accessToken = params.accessToken;
 		}
 
-		if(params.clientType === "none" && !headers.accessToken) {			
+		if (params.clientType === "none" && !headers.accessToken) {
 			throw new Error(`If the property clientType is set to "${params.clientType}" then the property accessToken must be provided.`);
 		}
 
-		if(params.clientType === 'client_credentials' && !(params.clientDetails as ClientCredentialsGrant)) {			
+		if (params.clientType === 'client_credentials' && !(params.clientDetails as ClientCredentialsGrant)) {
 			throw new Error(`If the property client type is set to "${params.clientType}" then the property clientDetails must be set to a ClientCredentialsGrant value.`);
 		}
 
@@ -47,14 +47,6 @@ export class HttpClient implements IHttpClient {
 		const requestUrl = isRelativeRequestUrl ? `${url}` : `${params.rootUrl}${url}`;
 		return this.fetchFn(requestUrl, request)
 			.then((response) => {
-				if (response.ok) {
-					return response
-						.text()
-						.then(text => {
-							return !!text && text.length && text.length > 0 ? JSON.parse(text) : {};
-						});
-				}
-
 				let responseHandlerFunction: ResponseHandlerFunction = null;
 				if (!!params.responseHandler) {
 					if (!!params.responseHandler['*']) {
@@ -66,7 +58,7 @@ export class HttpClient implements IHttpClient {
 					}
 				}
 
-				let clientError: ClientError = {
+				let responseContext: ResponseContext = {
 					status: response.status,
 					statusText: response.statusText,
 					url: response.url,
@@ -79,19 +71,26 @@ export class HttpClient implements IHttpClient {
 						return !!text && text.length && text.length > 0 ? JSON.parse(text) : {};
 					})
 					.then(
-						responseJson => {
-							clientError.data = responseJson;
+						result => {
+							responseContext.data = result;
+							if (response.ok) {
+								if (!!responseHandlerFunction) {
+									responseHandlerFunction(response, responseContext);
+								}
+
+								return result;
+							}
 
 							return !!responseHandlerFunction ?
-								responseHandlerFunction(response, clientError)
-								: Promise.reject(clientError);
+								responseHandlerFunction(response, responseContext)
+								: Promise.reject(responseContext);
 						},
 						reason => {
-							clientError.data = reason;
+							responseContext.data = reason;
 
 							return !!responseHandlerFunction ?
-								responseHandlerFunction(response, clientError)
-								: Promise.reject(clientError);
+								responseHandlerFunction(response, responseContext)
+								: Promise.reject(responseContext);
 						}
 					);
 			})

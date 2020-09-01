@@ -1,6 +1,6 @@
-import { ClientError } from './errors';
+import { ResponseContext } from "./ResponseContext";
 
-export type ResponseHandlerFunction = (response: Response, clientError: ClientError) => any;
+export type ResponseHandlerFunction = (response: Response, context: ResponseContext) => any;
 
 export interface ResponseHandler {
     ['*']?: ResponseHandlerFunction;

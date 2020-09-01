@@ -37,13 +37,6 @@ var HttpClient = /** @class */ (function () {
         var requestUrl = isRelativeRequestUrl ? "" + url : "" + params.rootUrl + url;
         return this.fetchFn(requestUrl, request)
             .then(function (response) {
-            if (response.ok) {
-                return response
-                    .text()
-                    .then(function (text) {
-                    return !!text && text.length && text.length > 0 ? JSON.parse(text) : {};
-                });
-            }
             var responseHandlerFunction = null;
             if (!!params.responseHandler) {
                 if (!!params.responseHandler['*']) {
@@ -53,7 +46,7 @@ var HttpClient = /** @class */ (function () {
                     responseHandlerFunction = params.responseHandler[response.status];
                 }
             }
-            var clientError = {
+            var responseContext = {
                 status: response.status,
                 statusText: response.statusText,
                 url: response.url,
@@ -64,16 +57,22 @@ var HttpClient = /** @class */ (function () {
                 .then(function (text) {
                 return !!text && text.length && text.length > 0 ? JSON.parse(text) : {};
             })
-                .then(function (responseJson) {
-                clientError.data = responseJson;
+                .then(function (result) {
+                responseContext.data = result;
+                if (response.ok) {
+                    if (!!responseHandlerFunction) {
+                        responseHandlerFunction(response, responseContext);
+                    }
+                    return result;
+                }
                 return !!responseHandlerFunction ?
-                    responseHandlerFunction(response, clientError)
-                    : Promise.reject(clientError);
+                    responseHandlerFunction(response, responseContext)
+                    : Promise.reject(responseContext);
             }, function (reason) {
-                clientError.data = reason;
+                responseContext.data = reason;
                 return !!responseHandlerFunction ?
-                    responseHandlerFunction(response, clientError)
-                    : Promise.reject(clientError);
+                    responseHandlerFunction(response, responseContext)
+                    : Promise.reject(responseContext);
             });
         })
             .then(function (result) { return result; });

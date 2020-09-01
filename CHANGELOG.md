@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.0.0-rc.1] - 2020-09-01
+### Added
+- extended the http client behaviour and allowed the custom response handler to be called on successful api requests.
+
 ## [1.0.0-beta.10] - 2020-07-21
 ### Added
 - added *ContensisApplicationError* and *ContensisAuthenticationError* classes
