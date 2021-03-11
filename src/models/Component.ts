@@ -1,18 +1,5 @@
-import { VersionInfo } from './VersionInfo';
-import { Field } from './Field';
+import { ContentTypeBase } from './ContentTypeBase';
 
-export interface Component {
-    id: string;
-    projectId: string;
-    name: {
-        [key: string]: string;
-    };
-    description: {
-        [key: string]: string;
-    };
-    fields: Field[];
-    enabled: boolean;
-    dataFormat: string;
-    previewUrl: string;
-    version: VersionInfo;
+export interface Component extends ContentTypeBase<'component'> {
+
 }
