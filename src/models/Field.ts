@@ -35,7 +35,7 @@ type FieldDataFormatMap<T> = {
 
 type FieldDataType = keyof FieldDataTypeMap<any>;
 
-type FieldDataFormat = keyof FieldDataFormatMap<any> | `component.${string}`;
+type FieldDataFormat = keyof FieldDataFormatMap<any> | string; // `component.${string}`;
 
 export interface Field {
     id: string;
@@ -47,5 +47,5 @@ export interface Field {
     groupId?: string;
     validations?: Validations<Field>;
     editor?: Editor;
-    readonly fields?: Field[]
+    readonly fields?: Field[];
 }

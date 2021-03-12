@@ -1,6 +1,6 @@
 import { Field } from './Field';
 import { LocalisedString, LocalisedIdAndValue } from './Localised';
-import { VersionInfo } from "./VersionInfo";
+import { VersionInfo } from './VersionInfo';
 
 type ContentTypeFormatMap<T> = { entry: T, component: T, asset: T };
 
