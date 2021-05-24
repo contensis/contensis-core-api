@@ -1,6 +1,6 @@
 {
   "name": "contensis-core-api",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Contensis Core API Library ",
   "engines": {
     "node": ">=8"
@@ -9,11 +9,11 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "lint": "npx tslint src/**/*.ts",
-    "pretest": "rimraf coverage/*",
+    "pretest": "npx rimraf coverage/*",
     "test": "npm run lint",
-    "build:es5": "rimraf bundle-es5/* && npx tsc -p src",
-    "build:esnext": "rimraf bundle-es2015/* && npx tsc -p src/tsconfig-esnext.json",
-    "build:npm": "rimraf lib/* && npx tsc -p src/tsconfig-npm.json",
+    "build:es5": "npx rimraf bundle-es5/* && npx tsc -p src",
+    "build:esnext": "npx rimraf bundle-es2015/* && npx tsc -p src/tsconfig-esnext.json",
+    "build:npm": "npx rimraf lib/* && npx tsc -p src/tsconfig-npm.json",
     "all": "npm run build:es5 && npm run build:esnext && npm run build:npm"
   },
   "repository": {
@@ -30,7 +30,7 @@
     "rimraf": "^2.6.3",
     "ts-loader": "^3.5.0",
     "tslint": "^5.14.0",
-    "typescript": "3.3.1"
+    "typescript": "^3.3.1"
   },
   "dependencies": {
     "@types/detect-node": "^2.0.0",

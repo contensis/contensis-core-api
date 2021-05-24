@@ -1,4 +1,5 @@
 import { MapperFn } from './models';
+export declare type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 export declare function hasProp(o: any, key: string): boolean;
 export declare function toQuery(values: {
     [key: string]: any;

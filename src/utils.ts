@@ -1,6 +1,8 @@
 import { MapperFn, ClientParams, VersionStatus } from './models';
 import * as isNode from 'detect-node';
 
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
 export function hasProp(o: any, key: string) {
 	return !!o && typeof o[key] !== 'undefined';
 }

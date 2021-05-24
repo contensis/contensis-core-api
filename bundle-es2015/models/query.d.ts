@@ -1,4 +1,5 @@
 import { ContensisQuery, ContensisQueryOperators, ContensisQueryOrderBy, ExpressionValueType, IExpression, ILogicalExpression, OperatorType } from '../models';
+import { Omit } from '../utils';
 export declare abstract class ExpressionBase implements IExpression {
     fieldName: string;
     values: any[];
@@ -54,6 +55,14 @@ export declare class Query implements ContensisQuery {
     pageIndex: number;
     pageSize: number;
     fields: string[];
+    constructor(...whereExpressions: IExpression[]);
+    toJSON(): any;
+}
+export declare class ManagementQuery implements Omit<ContensisQuery, 'fields'> {
+    where: WhereExpression;
+    orderBy: string | string[] | ContensisQueryOrderBy;
+    pageIndex: number;
+    pageSize: number;
     constructor(...whereExpressions: IExpression[]);
     toJSON(): any;
 }
