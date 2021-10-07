@@ -1,0 +1,20 @@
+export declare type OperatorType = 'and' | 'between' | 'contains' | 'endsWith' | 'equalTo' | 'exists' | 'freeText' | 'greaterThan' | 'greaterThanOrEqualTo' | 'in' | 'lessThan' | 'lessThanOrEqualTo' | 'not' | 'or' | 'startsWith' | 'where' | 'distanceWithin';
+export declare const OperatorTypeEnum: {
+    And: OperatorType;
+    Between: OperatorType;
+    Contains: OperatorType;
+    EndsWith: OperatorType;
+    EqualTo: OperatorType;
+    Exists: OperatorType;
+    FreeText: OperatorType;
+    GreaterThan: OperatorType;
+    GreaterThanOrEqualTo: OperatorType;
+    In: OperatorType;
+    LessThan: OperatorType;
+    LessThanOrEqualTo: OperatorType;
+    Not: OperatorType;
+    Or: OperatorType;
+    StartsWith: OperatorType;
+    Where: OperatorType;
+    DistanceWithin: OperatorType;
+};
