@@ -1,3 +1,3 @@
 export * from './errors';
-export * from './query';
+export * from './search';
 //# sourceMappingURL=index.js.map

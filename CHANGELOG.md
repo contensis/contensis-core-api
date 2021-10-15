@@ -4,7 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.3] - 2021-0524
+
+## [1.0.4] - 2021-10-07
+### Added
+- Extended *freeText* expression to support fuzzy search and operator switch
+
+## [1.0.3] - 2021-05-24
 ### Added
 - Added *ManagementQuery* type as an alternative to the *Query* type that removes the *fields* property
 
