@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "description": "Contensis Core API Library ",
   "engines": {
-    "node": ">=8"
+    "node": ">=12"
   },
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
