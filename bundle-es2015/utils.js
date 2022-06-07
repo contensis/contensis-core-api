@@ -2,10 +2,15 @@ import * as isNode from 'detect-node';
 export function hasProp(o, key) {
     return !!o && typeof o[key] !== 'undefined';
 }
-export function toQuery(values) {
-    let keys = Object.keys(values)
-        .filter((key) => key && (values[key] !== null) && (values[key] !== ''));
-    keys.sort(); // sort keys for easier testing
+export function toQuery(values, dontSort = false) {
+    let keys = Object
+        .keys(values)
+        .filter((key) => key && (values[key] !== null)
+        && (values[key] !== '')
+        && (Array.isArray(values[key]) ? values[key].length > 0 : true));
+    if (!dontSort) {
+        keys.sort(); // sort keys for easier testing
+    }
     let query = keys
         .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(values[key]));
     return (query.length > 0)

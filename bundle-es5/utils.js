@@ -2,10 +2,18 @@ import * as isNode from 'detect-node';
 export function hasProp(o, key) {
     return !!o && typeof o[key] !== 'undefined';
 }
-export function toQuery(values) {
-    var keys = Object.keys(values)
-        .filter(function (key) { return key && (values[key] !== null) && (values[key] !== ''); });
-    keys.sort(); // sort keys for easier testing
+export function toQuery(values, dontSort) {
+    if (dontSort === void 0) { dontSort = false; }
+    var keys = Object
+        .keys(values)
+        .filter(function (key) {
+        return key && (values[key] !== null)
+            && (values[key] !== '')
+            && (Array.isArray(values[key]) ? values[key].length > 0 : true);
+    });
+    if (!dontSort) {
+        keys.sort(); // sort keys for easier testing
+    }
     var query = keys
         .map(function (key) { return encodeURIComponent(key) + '=' + encodeURIComponent(values[key]); });
     return (query.length > 0)

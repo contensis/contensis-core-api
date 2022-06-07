@@ -1,4 +1,4 @@
 export interface ContensisQueryOrderBy {
     asc(fieldName: string): ContensisQueryOrderBy;
-    desc(fieldName: any): ContensisQueryOrderBy;
+    desc(fieldName: string): ContensisQueryOrderBy;
 }

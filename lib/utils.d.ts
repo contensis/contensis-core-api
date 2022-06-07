@@ -3,7 +3,7 @@ export declare type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 export declare function hasProp(o: any, key: string): boolean;
 export declare function toQuery(values: {
     [key: string]: any;
-}): string;
+}, dontSort?: boolean): string;
 export declare function isString(obj: any): boolean;
 /** Checks if the runtime context is a browser */
 export declare function isBrowser(): boolean;

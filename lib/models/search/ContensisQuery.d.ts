@@ -5,5 +5,5 @@ export interface ContensisQuery {
     orderBy: string | string[] | ContensisQueryOrderBy;
     pageIndex: number;
     pageSize: number;
-    fields: string[];
+    fields?: string[];
 }
