@@ -11,9 +11,9 @@
     "lint": "npx tslint src/**/*.ts",
     "pretest": "npx rimraf coverage/*",
     "test": "npm run lint",
-    "build:es5": "npx rimraf bundle-es5/* && npx tsc -p src",
-    "build:esnext": "npx rimraf bundle-es2015/* && npx tsc -p src/tsconfig-esnext.json",
-    "build:npm": "npx rimraf lib/* && npx tsc -p src/tsconfig-npm.json",
+    "build:es5": "npx rimraf -g bundle-es5/* && npx tsc -p src",
+    "build:esnext": "npx rimraf -g bundle-es2015/* && npx tsc -p src/tsconfig-esnext.json",
+    "build:npm": "npx rimraf -g lib/* && npx tsc -p src/tsconfig-npm.json",
     "all": "npm run build:es5 && npm run build:esnext && npm run build:npm"
   },
   "repository": {
