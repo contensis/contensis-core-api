@@ -1,3 +1,3 @@
 export interface FieldLinkDepths {
-  [field: string]: number;
+	[field: string]: number;
 }
