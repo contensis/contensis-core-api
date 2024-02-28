@@ -1,4 +1,5 @@
 import { ContensisQuery, ContensisQueryOrderBy, IExpression } from '..';
+import { FieldLinkDepths } from './FieldLinkDepths';
 import { WhereExpression } from './Operators';
 import { serializeOrder } from './QueryTypes';
 
@@ -7,6 +8,7 @@ export class Query implements ContensisQuery {
     orderBy: string | string[] | ContensisQueryOrderBy = [];
     pageIndex: number = 0;
     pageSize: number = 20;
+    fieldLinkDepths?: FieldLinkDepths = {};
     fields?: string[] = [];
 
     constructor(...whereExpressions: IExpression[]) {
@@ -29,6 +31,9 @@ export class Query implements ContensisQuery {
 
         if (this.fields && this.fields.length > 0) {
             result.fields = this.fields;
+        }
+        if (this.fieldLinkDepths && Object.keys(this.fieldLinkDepths).length > 0) {
+          result.fieldLinkDepths = this.fieldLinkDepths;
         }
 
         return result;
