@@ -1,10 +1,10 @@
 export class ManagementZenqlQuery {
-    zenql = '';
-    pageIndex = 0;
-    pageSize = 20;
-    includeArchived = false;
-    includeDeleted = false;
     constructor(zenql) {
+        this.zenql = '';
+        this.pageIndex = 0;
+        this.pageSize = 20;
+        this.includeArchived = false;
+        this.includeDeleted = false;
         this.zenql = zenql;
     }
     toJSON() {

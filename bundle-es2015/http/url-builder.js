@@ -1,17 +1,14 @@
 import { hasProp, isString, toQuery } from '../utils';
 export class UrlBuilder {
-    url;
-    query;
-    paramMatcher = /(:\b\D\w*)/g;
-    options = {};
-    clientParams;
-    mappers = {};
-    static create(url, query = null) {
-        return new UrlBuilder(url, query);
-    }
     constructor(url, query) {
         this.url = url;
         this.query = query;
+        this.paramMatcher = /(:\b\D\w*)/g;
+        this.options = {};
+        this.mappers = {};
+    }
+    static create(url, query = null) {
+        return new UrlBuilder(url, query);
     }
     addOptions(options, defaultParamName = null) {
         if (isString(options) && !!defaultParamName) {

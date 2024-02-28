@@ -1,13 +1,13 @@
 import { WhereExpression } from './Operators';
 import { serializeOrder } from './QueryTypes';
 export class Query {
-    where = new WhereExpression();
-    orderBy = [];
-    pageIndex = 0;
-    pageSize = 20;
-    fieldLinkDepths = {};
-    fields = [];
     constructor(...whereExpressions) {
+        this.where = new WhereExpression();
+        this.orderBy = [];
+        this.pageIndex = 0;
+        this.pageSize = 20;
+        this.fieldLinkDepths = {};
+        this.fields = [];
         if (whereExpressions) {
             this.where.addRange(whereExpressions);
         }

@@ -1,10 +1,10 @@
 export class ZenqlQuery {
-    zenql = '';
-    pageIndex = 0;
-    pageSize = 20;
-    fieldLinkDepths = {};
-    fields = [];
     constructor(zenql) {
+        this.zenql = '';
+        this.pageIndex = 0;
+        this.pageSize = 20;
+        this.fieldLinkDepths = {};
+        this.fields = [];
         this.zenql = zenql;
     }
     toJSON() {

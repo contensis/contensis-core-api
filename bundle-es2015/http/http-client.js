@@ -1,7 +1,5 @@
 import { isBrowser } from '../utils';
 export class HttpClient {
-    paramsProvider;
-    fetchFn;
     constructor(paramsProvider, fetchFn) {
         this.paramsProvider = paramsProvider;
         this.fetchFn = fetchFn;
