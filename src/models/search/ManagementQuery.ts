@@ -3,8 +3,9 @@ import { Omit } from '../../utils';
 import { WhereExpression } from './Operators';
 import { serializeOrder } from './QueryTypes';
 
-
-export class ManagementQuery implements Omit<ContensisQuery, 'fields'> {
+export class ManagementQuery
+    implements Omit<ContensisQuery, 'fields' | 'fieldLinkDepths'>
+{
     where: WhereExpression = new WhereExpression();
     orderBy: string | string[] | ContensisQueryOrderBy = [];
     pageIndex: number = 0;

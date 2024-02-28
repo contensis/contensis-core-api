@@ -4,7 +4,7 @@ export * from './ManagementQuery';
 export * from './ManagementZenqlQuery';
 export * from './Operators';
 export * from './OperatorType';
-export * from './Query';
+export * from './query';
 export * from './QueryTypes';
 export * from './ZenqlQuery';
 //# sourceMappingURL=index.js.map

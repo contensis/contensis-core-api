@@ -1,10 +1,11 @@
-import { IZenqlQuery } from '..';
+import { FieldLinkDepths, IZenqlQuery } from '..';
 
 
 export class ZenqlQuery implements IZenqlQuery {
     zenql: string = '';
     pageIndex: number = 0;
     pageSize: number = 20;
+    fieldLinkDepths?: FieldLinkDepths = {};
     fields?: string[] = [];
 
     constructor(zenql: string) {
@@ -19,6 +20,9 @@ export class ZenqlQuery implements IZenqlQuery {
 
         if (this.fields && this.fields.length > 0) {
             result.fields = this.fields;
+        }
+        if (this.fieldLinkDepths && Object.keys(this.fieldLinkDepths).length > 0) {
+          result.fieldLinkDepths = this.fieldLinkDepths;
         }
 
         return result;

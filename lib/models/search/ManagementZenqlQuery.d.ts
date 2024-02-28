@@ -1,6 +1,6 @@
 import { IZenqlQuery } from '..';
 import { Omit } from '../../utils';
-export declare class ManagementZenqlQuery implements Omit<IZenqlQuery, 'fields'> {
+export declare class ManagementZenqlQuery implements Omit<IZenqlQuery, 'fields' | 'fieldLinkDepths'> {
     zenql: string;
     pageIndex: number;
     pageSize: number;
