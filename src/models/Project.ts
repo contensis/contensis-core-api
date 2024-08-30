@@ -4,4 +4,6 @@ export interface Project {
 	description: string;
 	primaryLanguage: string;
 	supportedLanguages: string[];
+	color: string; // Probably uncessary, like a: 'a' | 'b';
+	deliverySysExclusions: string[];
 }
