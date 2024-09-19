@@ -33,8 +33,6 @@ type FieldDataFormatMap<T> = {
     'component': T
 };
 
-/** Potential benefit to exporting these for TS generation */
-
 export type FieldDataType = keyof FieldDataTypeMap<any>;
 
 export type FieldDataFormat = keyof FieldDataFormatMap<any> | string; // `component.${string}`;
