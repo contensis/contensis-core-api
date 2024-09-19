@@ -1,6 +1,6 @@
 {
   "name": "contensis-core-api",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Contensis Core API Library ",
   "engines": {
     "node": ">=12"
