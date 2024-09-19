@@ -5,5 +5,9 @@ export interface VersionInfo {
     modified: string;
     publishedBy: string;
     published: string;
+    deleted?: string;
+    deletedBy?: string;
+    archived?: string;
+    archivedBy?: string;
     versionNo: string;
 }

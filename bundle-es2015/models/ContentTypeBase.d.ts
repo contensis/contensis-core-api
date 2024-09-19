@@ -1,12 +1,7 @@
+import { ContentTypeFormat } from './ContentTypeFormat';
 import { Field } from './Field';
 import { LocalisedString, LocalisedIdAndValue } from './Localised';
 import { VersionInfo } from './VersionInfo';
-declare type ContentTypeFormatMap<T> = {
-    entry: T;
-    component: T;
-    asset: T;
-};
-export declare type ContentTypeFormat = keyof ContentTypeFormatMap<any>;
 export interface ContentTypeBase<TFormat extends ContentTypeFormat> {
     description?: LocalisedString;
     enabled?: boolean;
@@ -20,4 +15,3 @@ export interface ContentTypeBase<TFormat extends ContentTypeFormat> {
 }
 export interface ContentTypeGroup extends LocalisedIdAndValue {
 }
-export {};

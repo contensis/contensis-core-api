@@ -30,8 +30,8 @@ declare type FieldDataFormatMap<T> = {
     'taxonomy': T;
     'component': T;
 };
-declare type FieldDataType = keyof FieldDataTypeMap<any>;
-declare type FieldDataFormat = keyof FieldDataFormatMap<any> | string;
+export declare type FieldDataType = keyof FieldDataTypeMap<any>;
+export declare type FieldDataFormat = keyof FieldDataFormatMap<any> | string;
 export interface Field {
     id: string;
     name: LocalisedString;
