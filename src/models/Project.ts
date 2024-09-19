@@ -4,4 +4,5 @@ export interface Project {
 	description: string;
 	primaryLanguage: string;
 	supportedLanguages: string[];
+	deliverySysExclusions: string[];
 }

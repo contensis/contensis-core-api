@@ -33,9 +33,9 @@ type FieldDataFormatMap<T> = {
     'component': T
 };
 
-type FieldDataType = keyof FieldDataTypeMap<any>;
+export type FieldDataType = keyof FieldDataTypeMap<any>;
 
-type FieldDataFormat = keyof FieldDataFormatMap<any> | string; // `component.${string}`;
+export type FieldDataFormat = keyof FieldDataFormatMap<any> | string; // `component.${string}`;
 
 export interface Field {
     id: string;
