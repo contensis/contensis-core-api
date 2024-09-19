@@ -3,6 +3,7 @@ export * from './ClientCredentialsGrant';
 export * from './errors';
 export * from './ClientGrants';
 export * from './ClientParams';
+export * from './ContentTypeFormat';
 export * from './ContensisClassicGrant';
 export * from './ContensisClassicResfreshTokenGrant';
 export * from './Component';
