@@ -4,9 +4,9 @@ A dependency library written in TypeScript implementing common types and base me
 
 If you have arrived here looking for something to work with your Contensis environment you may be after one of:
 
-- <span style="font-size:133%;">[contensis-delivery-api](https://github.com/contensis/contensis-delivery-api) [![NPM version](https://img.shields.io/npm/v/contensis-delivery-api.svg?style=flat)](https://www.npmjs.com/package/contensis-delivery-api)</span>  
+- ### [contensis-delivery-api](https://github.com/contensis/contensis-delivery-api) [![NPM version](https://img.shields.io/npm/v/contensis-delivery-api.svg?style=flat)](https://www.npmjs.com/package/contensis-delivery-api)
   _Client for retrieving content using the read-only Contensis Delivery API_
-- <span style="font-size:133%;">[contensis-management-api](https://github.com/contensis/contensis-management-api) [![NPM version](https://img.shields.io/npm/v/contensis-management-api.svg?style=flat)](https://www.npmjs.com/package/contensis-management-api)</span>  
+- ### [contensis-management-api](https://github.com/contensis/contensis-management-api) [![NPM version](https://img.shields.io/npm/v/contensis-management-api.svg?style=flat)](https://www.npmjs.com/package/contensis-management-api)</span>
   _Client for managing content using the Contensis Management API_
 
 > ### Note
