@@ -2,7 +2,7 @@
 
 A dependency library written in TypeScript implementing common types and base methods used by contensis-delivery-api and contensis-management-api.
 
-If you have arrived here looking for something to work with your Contensis content you may be after one of:
+If you have arrived here looking for something to work with your Contensis environment you may be after one of:
 
 - [**contensis-delivery-api**](https://github.com/contensis/contensis-delivery-api) [![NPM version](https://img.shields.io/npm/v/contensis-delivery-api.svg?style=flat)](https://www.npmjs.com/package/contensis-delivery-api)  
   _Client for retrieving content using the read-only Contensis Delivery API_
@@ -11,6 +11,6 @@ If you have arrived here looking for something to work with your Contensis conte
 
 > ### Note
 >
-> The primary Contensis API called by the above packages is the [HTTP Delivery API](https://www.contensis.com/help-and-docs/apis/delivery-http) and [HTTP Management API](https://www.contensis.com/help-and-docs/apis/management-http)
+> The primary Contensis API used by the above packages is the [HTTP Delivery API](https://www.contensis.com/help-and-docs/apis/delivery-http) and [HTTP Management API](https://www.contensis.com/help-and-docs/apis/management-http)
 >
 > Documentation for all APIs is available on [contensis.com](https://www.contensis.com/help-and-docs/apis/all-apis)
