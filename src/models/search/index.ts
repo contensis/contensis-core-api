@@ -1,4 +1,5 @@
 export * from './ContensisQuery';
+export * from './ContensisQueryAggregations';
 export * from './ContensisQueryFactory';
 export * from './ContensisQueryOperators';
 export * from './ContensisQueryOrderBy';
