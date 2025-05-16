@@ -1,4 +1,4 @@
-import { Ordering } from "./Ordering";
+import { Ordering } from './Ordering';
 export class OrderByFactory {
     asc(fieldName) {
         return (new Ordering()).asc(fieldName);

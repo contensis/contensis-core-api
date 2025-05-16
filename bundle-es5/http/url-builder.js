@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __assign } from "tslib";
 import { hasProp, isString, toQuery } from '../utils';
 var UrlBuilder = /** @class */ (function () {
     function UrlBuilder(url, query) {
@@ -18,7 +18,7 @@ var UrlBuilder = /** @class */ (function () {
             this.options[defaultParamName] = options;
         }
         else {
-            this.options = tslib_1.__assign({}, this.options, options);
+            this.options = __assign(__assign({}, this.options), options);
         }
         return this;
     };
@@ -61,7 +61,7 @@ var UrlBuilder = /** @class */ (function () {
         }
         var query = {};
         if (this.query) {
-            query = tslib_1.__assign({}, this.query);
+            query = __assign({}, this.query);
             Object.keys(this.query).forEach(function (paramName) {
                 var value = query[paramName];
                 if (hasProp(_this.options, paramName)
@@ -79,7 +79,7 @@ var UrlBuilder = /** @class */ (function () {
         var url = Object.keys(namedParams)
             .reduce(function (url, key) { return url.replace(key, namedParams[key]); }, urlTemplate);
         var queryString = toQuery(query);
-        return "" + url + queryString;
+        return "".concat(url).concat(queryString);
     };
     return UrlBuilder;
 }());

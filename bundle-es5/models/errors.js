@@ -1,6 +1,6 @@
-import * as tslib_1 from "tslib";
+import { __extends } from "tslib";
 var ContensisApplicationError = /** @class */ (function (_super) {
-    tslib_1.__extends(ContensisApplicationError, _super);
+    __extends(ContensisApplicationError, _super);
     function ContensisApplicationError(message) {
         var _newTarget = this.constructor;
         var _this = _super.call(this, message) || this;
@@ -12,7 +12,7 @@ var ContensisApplicationError = /** @class */ (function (_super) {
 }(Error));
 export { ContensisApplicationError };
 var ContensisAuthenticationError = /** @class */ (function (_super) {
-    tslib_1.__extends(ContensisAuthenticationError, _super);
+    __extends(ContensisAuthenticationError, _super);
     function ContensisAuthenticationError(message) {
         var _newTarget = this.constructor;
         var _this = _super.call(this, message) || this;

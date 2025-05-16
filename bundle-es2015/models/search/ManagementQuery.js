@@ -1,13 +1,13 @@
 import { WhereExpression } from './Operators';
 import { serializeOrder } from './QueryTypes';
 export class ManagementQuery {
+    where = new WhereExpression();
+    orderBy = [];
+    pageIndex = 0;
+    pageSize = 20;
+    includeArchived = false;
+    includeDeleted = false;
     constructor(...whereExpressions) {
-        this.where = new WhereExpression();
-        this.orderBy = [];
-        this.pageIndex = 0;
-        this.pageSize = 20;
-        this.includeArchived = false;
-        this.includeDeleted = false;
         if (whereExpressions) {
             this.where.addRange(whereExpressions);
         }

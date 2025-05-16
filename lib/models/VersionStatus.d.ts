@@ -1,1 +1,1 @@
-export declare type VersionStatus = 'published' | 'latest';
+export type VersionStatus = 'published' | 'latest';

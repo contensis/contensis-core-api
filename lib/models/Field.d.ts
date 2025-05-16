@@ -1,7 +1,7 @@
 import { Editor } from './Editor';
 import { LocalisedString, LocalisedValue } from './Localised';
 import { Validations } from './Validations';
-declare type FieldDataTypeMap<T> = {
+type FieldDataTypeMap<T> = {
     'boolean': T;
     'booleanArray': T;
     'dateTime': T;
@@ -15,7 +15,7 @@ declare type FieldDataTypeMap<T> = {
     'string': T;
     'stringArray': T;
 };
-declare type FieldDataFormatMap<T> = {
+type FieldDataFormatMap<T> = {
     'asset': T;
     'daterange': T;
     'embed': T;
@@ -30,8 +30,8 @@ declare type FieldDataFormatMap<T> = {
     'taxonomy': T;
     'component': T;
 };
-export declare type FieldDataType = keyof FieldDataTypeMap<any>;
-export declare type FieldDataFormat = keyof FieldDataFormatMap<any> | string;
+export type FieldDataType = keyof FieldDataTypeMap<any>;
+export type FieldDataFormat = keyof FieldDataFormatMap<any> | string;
 export interface Field {
     id: string;
     name: LocalisedString;

@@ -1,8 +1,8 @@
-export declare type LocalisedValue<T> = {
+export type LocalisedValue<T> = {
     [key: string]: T;
 };
-export declare type LocalisedString = LocalisedValue<string>;
-export declare type LocalisedIdAndValue = {
+export type LocalisedString = LocalisedValue<string>;
+export type LocalisedIdAndValue = {
     id: string;
     name: LocalisedString;
 };

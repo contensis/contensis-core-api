@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __extends } from "tslib";
 import { ExpressionValueTypeEnum, OperatorTypeEnum } from '..';
 import { FreeTextSearchOperatorTypeEnum } from './FreeTextSearchOperatorType';
 var ExpressionBase = /** @class */ (function () {
@@ -44,7 +44,7 @@ var ExpressionBase = /** @class */ (function () {
 }());
 export { ExpressionBase };
 var LogicalExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(LogicalExpression, _super);
+    __extends(LogicalExpression, _super);
     function LogicalExpression(values, operatorName, valueType) {
         if (values === void 0) { values = []; }
         return _super.call(this, null, values, operatorName, ExpressionValueTypeEnum.Array) || this;
@@ -97,119 +97,119 @@ var LogicalExpression = /** @class */ (function (_super) {
 }(ExpressionBase));
 export { LogicalExpression };
 var AndExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(AndExpression, _super);
+    __extends(AndExpression, _super);
     function AndExpression(values) {
         return _super.call(this, values, OperatorTypeEnum.And, ExpressionValueTypeEnum.Array) || this;
     }
     return AndExpression;
 }(LogicalExpression));
 var BetweenExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(BetweenExpression, _super);
+    __extends(BetweenExpression, _super);
     function BetweenExpression(fieldName, minimum, maximum) {
         return _super.call(this, fieldName, [minimum, maximum], OperatorTypeEnum.Between, ExpressionValueTypeEnum.Array) || this;
     }
     return BetweenExpression;
 }(ExpressionBase));
 var ContainsExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(ContainsExpression, _super);
+    __extends(ContainsExpression, _super);
     function ContainsExpression(fieldName, value) {
         return _super.call(this, fieldName, [value], OperatorTypeEnum.Contains, ExpressionValueTypeEnum.Single) || this;
     }
     return ContainsExpression;
 }(ExpressionBase));
 var DistanceWithinExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(DistanceWithinExpression, _super);
+    __extends(DistanceWithinExpression, _super);
     function DistanceWithinExpression(fieldName, value) {
         return _super.call(this, fieldName, [value], OperatorTypeEnum.DistanceWithin, ExpressionValueTypeEnum.Single) || this;
     }
     return DistanceWithinExpression;
 }(ExpressionBase));
 var EndsWithExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(EndsWithExpression, _super);
+    __extends(EndsWithExpression, _super);
     function EndsWithExpression(fieldName, value) {
         return _super.call(this, fieldName, [value], OperatorTypeEnum.EndsWith, ExpressionValueTypeEnum.Single) || this;
     }
     return EndsWithExpression;
 }(ExpressionBase));
 var EqualToExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(EqualToExpression, _super);
+    __extends(EqualToExpression, _super);
     function EqualToExpression(fieldName, value) {
         return _super.call(this, fieldName, [value], OperatorTypeEnum.EqualTo, ExpressionValueTypeEnum.Single) || this;
     }
     return EqualToExpression;
 }(ExpressionBase));
 var ExistsExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(ExistsExpression, _super);
+    __extends(ExistsExpression, _super);
     function ExistsExpression(fieldName, value) {
         return _super.call(this, fieldName, [value], OperatorTypeEnum.Exists, ExpressionValueTypeEnum.Single) || this;
     }
     return ExistsExpression;
 }(ExpressionBase));
 var FreeTextExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(FreeTextExpression, _super);
+    __extends(FreeTextExpression, _super);
     function FreeTextExpression(fieldName, value) {
         return _super.call(this, fieldName, [value], OperatorTypeEnum.FreeText, ExpressionValueTypeEnum.Single) || this;
     }
     return FreeTextExpression;
 }(ExpressionBase));
 var GreaterThanExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(GreaterThanExpression, _super);
+    __extends(GreaterThanExpression, _super);
     function GreaterThanExpression(fieldName, value) {
         return _super.call(this, fieldName, [value], OperatorTypeEnum.GreaterThan, ExpressionValueTypeEnum.Single) || this;
     }
     return GreaterThanExpression;
 }(ExpressionBase));
 var GreaterThanOrEqualToExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(GreaterThanOrEqualToExpression, _super);
+    __extends(GreaterThanOrEqualToExpression, _super);
     function GreaterThanOrEqualToExpression(fieldName, value) {
         return _super.call(this, fieldName, [value], OperatorTypeEnum.GreaterThanOrEqualTo, ExpressionValueTypeEnum.Single) || this;
     }
     return GreaterThanOrEqualToExpression;
 }(ExpressionBase));
 var InExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(InExpression, _super);
+    __extends(InExpression, _super);
     function InExpression(fieldName, values) {
         return _super.call(this, fieldName, values, OperatorTypeEnum.In, ExpressionValueTypeEnum.Array) || this;
     }
     return InExpression;
 }(ExpressionBase));
 var LessThanExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(LessThanExpression, _super);
+    __extends(LessThanExpression, _super);
     function LessThanExpression(fieldName, value) {
         return _super.call(this, fieldName, [value], OperatorTypeEnum.LessThan, ExpressionValueTypeEnum.Single) || this;
     }
     return LessThanExpression;
 }(ExpressionBase));
 var LessThanOrEqualToExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(LessThanOrEqualToExpression, _super);
+    __extends(LessThanOrEqualToExpression, _super);
     function LessThanOrEqualToExpression(fieldName, value) {
         return _super.call(this, fieldName, [value], OperatorTypeEnum.LessThanOrEqualTo, ExpressionValueTypeEnum.Single) || this;
     }
     return LessThanOrEqualToExpression;
 }(ExpressionBase));
 var NotExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(NotExpression, _super);
+    __extends(NotExpression, _super);
     function NotExpression(value) {
         return _super.call(this, [value], OperatorTypeEnum.Not, ExpressionValueTypeEnum.Single) || this;
     }
     return NotExpression;
 }(LogicalExpression));
 var OrExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(OrExpression, _super);
+    __extends(OrExpression, _super);
     function OrExpression(values) {
         return _super.call(this, values, OperatorTypeEnum.Or, ExpressionValueTypeEnum.Array) || this;
     }
     return OrExpression;
 }(LogicalExpression));
 var StartsWithExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(StartsWithExpression, _super);
+    __extends(StartsWithExpression, _super);
     function StartsWithExpression(fieldName, value) {
         return _super.call(this, fieldName, [value], OperatorTypeEnum.StartsWith, ExpressionValueTypeEnum.Single) || this;
     }
     return StartsWithExpression;
 }(ExpressionBase));
 var WhereExpression = /** @class */ (function (_super) {
-    tslib_1.__extends(WhereExpression, _super);
+    __extends(WhereExpression, _super);
     function WhereExpression(values) {
         if (values === void 0) { values = []; }
         return _super.call(this, values, OperatorTypeEnum.Where, ExpressionValueTypeEnum.Array) || this;
