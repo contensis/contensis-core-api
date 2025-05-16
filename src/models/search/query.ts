@@ -34,7 +34,10 @@ export class Query implements ContensisQuery {
             result.fields = this.fields;
         }
         if (this.fieldLinkDepths && Object.keys(this.fieldLinkDepths).length > 0) {
-          result.fieldLinkDepths = this.fieldLinkDepths;
+            result.fieldLinkDepths = this.fieldLinkDepths;
+        }
+        if (this.aggregations && Object.keys(this.aggregations).length > 0) {
+            result.aggregations = this.aggregations;
         }
         if (this.aggregations && Object.keys(this.aggregations).length > 0) {
             result.aggregations = this.aggregations;
