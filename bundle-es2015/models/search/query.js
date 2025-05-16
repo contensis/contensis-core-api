@@ -8,6 +8,7 @@ export class Query {
         this.pageSize = 20;
         this.fieldLinkDepths = {};
         this.fields = [];
+        this.aggregations = {};
         if (whereExpressions) {
             this.where.addRange(whereExpressions);
         }
@@ -26,6 +27,9 @@ export class Query {
         }
         if (this.fieldLinkDepths && Object.keys(this.fieldLinkDepths).length > 0) {
             result.fieldLinkDepths = this.fieldLinkDepths;
+        }
+        if (this.aggregations && Object.keys(this.aggregations).length > 0) {
+            result.aggregations = this.aggregations;
         }
         return result;
     }
