@@ -14,7 +14,7 @@ export function toQuery(values: { [key: string]: any }, dontSort: boolean = fals
 			key && (values[key] !== null)
 			&& (values[key] !== '')
 			&& (Array.isArray(values[key]) ? values[key].length > 0 : true));
-			
+
 	if (!dontSort) {
 		keys.sort(); // sort keys for easier testing
 	}
