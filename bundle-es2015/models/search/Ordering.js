@@ -1,7 +1,5 @@
 export class Ordering {
-    constructor() {
-        this._items = [];
-    }
+    _items = [];
     asc(fieldName) {
         this._items.push({ 'asc': fieldName });
         return this;

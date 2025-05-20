@@ -35,6 +35,9 @@ var Query = /** @class */ (function () {
         if (this.aggregations && Object.keys(this.aggregations).length > 0) {
             result.aggregations = this.aggregations;
         }
+        if (this.aggregations && Object.keys(this.aggregations).length > 0) {
+            result.aggregations = this.aggregations;
+        }
         return result;
     };
     return Query;
