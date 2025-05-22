@@ -19,11 +19,11 @@ export class Query implements ContensisQuery {
     }
 
     toJSON() {
-        let result: any = {};
+        const result: any = {};
         result.pageIndex = this.pageIndex;
         result.pageSize = this.pageSize;
 
-        let orderByDtos = serializeOrder(this.orderBy);
+        const orderByDtos = serializeOrder(this.orderBy);
         if (orderByDtos && orderByDtos.length > 0) {
             result.orderBy = orderByDtos;
         }
