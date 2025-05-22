@@ -14,10 +14,10 @@ export class Query {
         }
     }
     toJSON() {
-        let result = {};
+        const result = {};
         result.pageIndex = this.pageIndex;
         result.pageSize = this.pageSize;
-        let orderByDtos = serializeOrder(this.orderBy);
+        const orderByDtos = serializeOrder(this.orderBy);
         if (orderByDtos && orderByDtos.length > 0) {
             result.orderBy = orderByDtos;
         }
