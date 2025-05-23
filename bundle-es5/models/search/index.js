@@ -17,6 +17,7 @@ export * from './Operators';
 export * from './OperatorType';
 export * from './PagedSearchList';
 export * from './query';
+export * from './QueryAggregation';
 export * from './QueryAggregations';
 export * from './QueryTypes';
 export * from './ZenqlQuery';
