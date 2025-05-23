@@ -1,5 +1,6 @@
+export * from './Aggregation';
+export * from './Aggregations';
 export * from './ContensisQuery';
-export * from './ContensisQueryAggregations';
 export * from './ContensisQueryFactory';
 export * from './ContensisQueryOperators';
 export * from './ContensisQueryOrderBy';
@@ -16,5 +17,6 @@ export * from './Operators';
 export * from './OperatorType';
 export * from './PagedSearchList';
 export * from './query';
+export * from './QueryAggregations';
 export * from './QueryTypes';
 export * from './ZenqlQuery';

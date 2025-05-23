@@ -1,10 +1,10 @@
-import { ContensisQueryAggregations } from './ContensisQueryAggregations';
+import { QueryAggregations } from './QueryAggregations';
 import { ContensisQueryOrderBy } from './ContensisQueryOrderBy';
 import { FieldLinkDepths } from './FieldLinkDepths';
 import { ILogicalExpression } from './ILogicalExpression';
 
 export interface ContensisQuery {
-	aggregations?: ContensisQueryAggregations
+	aggregations?: QueryAggregations
 	fieldLinkDepths?: FieldLinkDepths;
 	fields?: string[];
 	orderBy: string | string[] | ContensisQueryOrderBy;

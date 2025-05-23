@@ -1,4 +1,4 @@
-import { ContensisQueryAggregations, FieldLinkDepths, IZenqlQuery } from '..';
+import { QueryAggregations, FieldLinkDepths, IZenqlQuery } from '..';
 
 
 export class ZenqlQuery implements IZenqlQuery {
@@ -7,14 +7,14 @@ export class ZenqlQuery implements IZenqlQuery {
     pageSize: number = 20;
     fieldLinkDepths?: FieldLinkDepths = {};
     fields?: string[] = [];
-    aggregations?: ContensisQueryAggregations = {};
+    aggregations?: QueryAggregations = {};
 
     constructor(zenql: string) {
         this.zenql = zenql;
     }
 
     toJSON() {
-        let result: any = {};
+        const result: any = {};
         result.pageIndex = this.pageIndex;
         result.pageSize = this.pageSize;
         result.zenql = this.zenql;

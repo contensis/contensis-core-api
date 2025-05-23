@@ -1,4 +1,4 @@
-import { ContensisQuery, ContensisQueryAggregations, ContensisQueryOrderBy, IExpression } from '..';
+import { ContensisQuery, QueryAggregations, ContensisQueryOrderBy, IExpression } from '..';
 import { Omit } from '../../utils';
 import { WhereExpression } from './Operators';
 import { serializeOrder } from './QueryTypes';
@@ -11,7 +11,7 @@ export class ManagementQuery
     pageSize: number = 20;
     includeArchived?: boolean = false;
     includeDeleted?: boolean = false;
-    aggregations?: ContensisQueryAggregations = {};
+    aggregations?: QueryAggregations = {};
 
     constructor(...whereExpressions: IExpression[]) {
         if (whereExpressions) {

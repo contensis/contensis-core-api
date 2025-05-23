@@ -1,8 +1,8 @@
-import { ContensisQueryAggregations } from './ContensisQueryAggregations';
+import { QueryAggregations } from './QueryAggregations';
 import { FieldLinkDepths } from './FieldLinkDepths';
 
 export interface IZenqlQuery {
-	aggregations?: ContensisQueryAggregations;
+	aggregations?: QueryAggregations;
 	fieldLinkDepths?: FieldLinkDepths;
 	fields?: string[];
 	pageIndex: number;
