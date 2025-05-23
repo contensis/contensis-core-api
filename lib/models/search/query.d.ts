@@ -1,4 +1,4 @@
-import { ContensisQuery, ContensisQueryAggregations, ContensisQueryOrderBy, IExpression } from '..';
+import { ContensisQuery, QueryAggregations, ContensisQueryOrderBy, IExpression } from '..';
 import { FieldLinkDepths } from './FieldLinkDepths';
 import { WhereExpression } from './Operators';
 export declare class Query implements ContensisQuery {
@@ -8,7 +8,7 @@ export declare class Query implements ContensisQuery {
     pageSize: number;
     fieldLinkDepths?: FieldLinkDepths;
     fields?: string[];
-    aggregations?: ContensisQueryAggregations;
+    aggregations?: QueryAggregations;
     constructor(...whereExpressions: IExpression[]);
     toJSON(): any;
 }

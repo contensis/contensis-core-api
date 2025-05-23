@@ -1,4 +1,4 @@
-import { ContensisQueryAggregations, IZenqlQuery } from '..';
+import { QueryAggregations, IZenqlQuery } from '..';
 import { Omit } from '../../utils';
 export declare class ManagementZenqlQuery implements Omit<IZenqlQuery, 'fields' | 'fieldLinkDepths'> {
     zenql: string;
@@ -6,7 +6,7 @@ export declare class ManagementZenqlQuery implements Omit<IZenqlQuery, 'fields' 
     pageSize: number;
     includeArchived?: boolean;
     includeDeleted?: boolean;
-    aggregations?: ContensisQueryAggregations;
+    aggregations?: QueryAggregations;
     constructor(zenql: string);
     toJSON(): any;
 }

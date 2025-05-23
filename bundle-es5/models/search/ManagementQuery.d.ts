@@ -1,4 +1,4 @@
-import { ContensisQuery, ContensisQueryAggregations, ContensisQueryOrderBy, IExpression } from '..';
+import { ContensisQuery, QueryAggregations, ContensisQueryOrderBy, IExpression } from '..';
 import { Omit } from '../../utils';
 import { WhereExpression } from './Operators';
 export declare class ManagementQuery implements Omit<ContensisQuery, 'fields' | 'fieldLinkDepths'> {
@@ -8,7 +8,7 @@ export declare class ManagementQuery implements Omit<ContensisQuery, 'fields' | 
     pageSize: number;
     includeArchived?: boolean;
     includeDeleted?: boolean;
-    aggregations?: ContensisQueryAggregations;
+    aggregations?: QueryAggregations;
     constructor(...whereExpressions: IExpression[]);
     toJSON(): any;
 }
