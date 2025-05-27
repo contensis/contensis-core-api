@@ -12,6 +12,7 @@ var Query = /** @class */ (function () {
         this.pageSize = 20;
         this.fieldLinkDepths = {};
         this.fields = [];
+        this.aggregations = {};
         if (whereExpressions) {
             this.where.addRange(whereExpressions);
         }
@@ -30,6 +31,9 @@ var Query = /** @class */ (function () {
         }
         if (this.fieldLinkDepths && Object.keys(this.fieldLinkDepths).length > 0) {
             result.fieldLinkDepths = this.fieldLinkDepths;
+        }
+        if (this.aggregations && Object.keys(this.aggregations).length > 0) {
+            result.aggregations = this.aggregations;
         }
         return result;
     };

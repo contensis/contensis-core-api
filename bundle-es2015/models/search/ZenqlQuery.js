@@ -1,14 +1,15 @@
 export class ZenqlQuery {
+    zenql = '';
+    pageIndex = 0;
+    pageSize = 20;
+    fieldLinkDepths = {};
+    fields = [];
+    aggregations = {};
     constructor(zenql) {
-        this.zenql = '';
-        this.pageIndex = 0;
-        this.pageSize = 20;
-        this.fieldLinkDepths = {};
-        this.fields = [];
         this.zenql = zenql;
     }
     toJSON() {
-        let result = {};
+        const result = {};
         result.pageIndex = this.pageIndex;
         result.pageSize = this.pageSize;
         result.zenql = this.zenql;
@@ -17,6 +18,9 @@ export class ZenqlQuery {
         }
         if (this.fieldLinkDepths && Object.keys(this.fieldLinkDepths).length > 0) {
             result.fieldLinkDepths = this.fieldLinkDepths;
+        }
+        if (this.aggregations && Object.keys(this.aggregations).length > 0) {
+            result.aggregations = this.aggregations;
         }
         return result;
     }

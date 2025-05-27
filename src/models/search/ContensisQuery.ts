@@ -1,12 +1,14 @@
-import { ILogicalExpression } from './ILogicalExpression';
+import { QueryAggregations } from './QueryAggregations';
 import { ContensisQueryOrderBy } from './ContensisQueryOrderBy';
 import { FieldLinkDepths } from './FieldLinkDepths';
+import { ILogicalExpression } from './ILogicalExpression';
 
 export interface ContensisQuery {
-	where: ILogicalExpression;
+	aggregations?: QueryAggregations
+	fieldLinkDepths?: FieldLinkDepths;
+	fields?: string[];
 	orderBy: string | string[] | ContensisQueryOrderBy;
 	pageIndex: number;
 	pageSize: number;
-	fields?: string[];
-	fieldLinkDepths?: FieldLinkDepths;
+	where: ILogicalExpression;
 }

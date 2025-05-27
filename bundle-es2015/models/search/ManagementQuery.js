@@ -1,28 +1,31 @@
 import { WhereExpression } from './Operators';
 import { serializeOrder } from './QueryTypes';
 export class ManagementQuery {
+    where = new WhereExpression();
+    orderBy = [];
+    pageIndex = 0;
+    pageSize = 20;
+    includeArchived = false;
+    includeDeleted = false;
+    aggregations = {};
     constructor(...whereExpressions) {
-        this.where = new WhereExpression();
-        this.orderBy = [];
-        this.pageIndex = 0;
-        this.pageSize = 20;
-        this.includeArchived = false;
-        this.includeDeleted = false;
         if (whereExpressions) {
             this.where.addRange(whereExpressions);
         }
     }
     toJSON() {
-        let result = {};
+        const result = {};
         result.pageIndex = this.pageIndex;
         result.pageSize = this.pageSize;
-        let orderByDtos = serializeOrder(this.orderBy);
+        const orderByDtos = serializeOrder(this.orderBy);
         if (orderByDtos && orderByDtos.length > 0) {
             result.orderBy = orderByDtos;
         }
         result.where = this.where;
         result.includeArchived = this.includeArchived;
         result.includeDeleted = this.includeDeleted;
+        if (Object.keys(this.aggregations || {}).length)
+            result.aggregations = this.aggregations;
         return result;
     }
 }

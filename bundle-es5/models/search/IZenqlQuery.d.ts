@@ -1,8 +1,10 @@
+import { QueryAggregations } from './QueryAggregations';
 import { FieldLinkDepths } from './FieldLinkDepths';
 export interface IZenqlQuery {
-    zenql: string;
+    aggregations?: QueryAggregations;
+    fieldLinkDepths?: FieldLinkDepths;
+    fields?: string[];
     pageIndex: number;
     pageSize: number;
-    fields?: string[];
-    fieldLinkDepths?: FieldLinkDepths;
+    zenql: string;
 }

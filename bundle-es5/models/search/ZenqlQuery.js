@@ -5,6 +5,7 @@ var ZenqlQuery = /** @class */ (function () {
         this.pageSize = 20;
         this.fieldLinkDepths = {};
         this.fields = [];
+        this.aggregations = {};
         this.zenql = zenql;
     }
     ZenqlQuery.prototype.toJSON = function () {
@@ -17,6 +18,9 @@ var ZenqlQuery = /** @class */ (function () {
         }
         if (this.fieldLinkDepths && Object.keys(this.fieldLinkDepths).length > 0) {
             result.fieldLinkDepths = this.fieldLinkDepths;
+        }
+        if (this.aggregations && Object.keys(this.aggregations).length > 0) {
+            result.aggregations = this.aggregations;
         }
         return result;
     };

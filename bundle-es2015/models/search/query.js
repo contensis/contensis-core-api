@@ -1,22 +1,23 @@
 import { WhereExpression } from './Operators';
 import { serializeOrder } from './QueryTypes';
 export class Query {
+    where = new WhereExpression();
+    orderBy = [];
+    pageIndex = 0;
+    pageSize = 20;
+    fieldLinkDepths = {};
+    fields = [];
+    aggregations = {};
     constructor(...whereExpressions) {
-        this.where = new WhereExpression();
-        this.orderBy = [];
-        this.pageIndex = 0;
-        this.pageSize = 20;
-        this.fieldLinkDepths = {};
-        this.fields = [];
         if (whereExpressions) {
             this.where.addRange(whereExpressions);
         }
     }
     toJSON() {
-        let result = {};
+        const result = {};
         result.pageIndex = this.pageIndex;
         result.pageSize = this.pageSize;
-        let orderByDtos = serializeOrder(this.orderBy);
+        const orderByDtos = serializeOrder(this.orderBy);
         if (orderByDtos && orderByDtos.length > 0) {
             result.orderBy = orderByDtos;
         }
@@ -26,6 +27,9 @@ export class Query {
         }
         if (this.fieldLinkDepths && Object.keys(this.fieldLinkDepths).length > 0) {
             result.fieldLinkDepths = this.fieldLinkDepths;
+        }
+        if (this.aggregations && Object.keys(this.aggregations).length > 0) {
+            result.aggregations = this.aggregations;
         }
         return result;
     }

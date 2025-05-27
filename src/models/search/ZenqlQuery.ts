@@ -1,4 +1,4 @@
-import { FieldLinkDepths, IZenqlQuery } from '..';
+import { QueryAggregations, FieldLinkDepths, IZenqlQuery } from '..';
 
 
 export class ZenqlQuery implements IZenqlQuery {
@@ -7,13 +7,14 @@ export class ZenqlQuery implements IZenqlQuery {
     pageSize: number = 20;
     fieldLinkDepths?: FieldLinkDepths = {};
     fields?: string[] = [];
+    aggregations?: QueryAggregations = {};
 
     constructor(zenql: string) {
         this.zenql = zenql;
     }
 
     toJSON() {
-        let result: any = {};
+        const result: any = {};
         result.pageIndex = this.pageIndex;
         result.pageSize = this.pageSize;
         result.zenql = this.zenql;
@@ -22,7 +23,10 @@ export class ZenqlQuery implements IZenqlQuery {
             result.fields = this.fields;
         }
         if (this.fieldLinkDepths && Object.keys(this.fieldLinkDepths).length > 0) {
-          result.fieldLinkDepths = this.fieldLinkDepths;
+            result.fieldLinkDepths = this.fieldLinkDepths;
+        }
+        if (this.aggregations && Object.keys(this.aggregations).length > 0) {
+            result.aggregations = this.aggregations;
         }
 
         return result;

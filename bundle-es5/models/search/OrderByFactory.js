@@ -1,4 +1,4 @@
-import { Ordering } from "./Ordering";
+import { Ordering } from './Ordering';
 var OrderByFactory = /** @class */ (function () {
     function OrderByFactory() {
     }

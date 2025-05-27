@@ -1,4 +1,4 @@
-import { IZenqlQuery } from '..';
+import { QueryAggregations, IZenqlQuery } from '..';
 import { Omit } from '../../utils';
 
 export class ManagementZenqlQuery implements Omit<IZenqlQuery, 'fields' | 'fieldLinkDepths'> {
@@ -7,18 +7,22 @@ export class ManagementZenqlQuery implements Omit<IZenqlQuery, 'fields' | 'field
     pageSize: number = 20;
     includeArchived?: boolean = false;
     includeDeleted?: boolean = false;
+    aggregations?: QueryAggregations = {};
 
     constructor(zenql: string) {
         this.zenql = zenql;
     }
 
     toJSON() {
-        let result: any = {};
+        const result: any = {};
         result.pageIndex = this.pageIndex;
         result.pageSize = this.pageSize;
         result.zenql = this.zenql;
         result.includeArchived = this.includeArchived;
         result.includeDeleted = this.includeDeleted;
+
+        if (Object.keys(this.aggregations || {}).length)
+            result.aggregations = this.aggregations;
 
         return result;
     }

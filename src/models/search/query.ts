@@ -1,4 +1,4 @@
-import { ContensisQuery, ContensisQueryOrderBy, IExpression } from '..';
+import { ContensisQuery, QueryAggregations, ContensisQueryOrderBy, IExpression } from '..';
 import { FieldLinkDepths } from './FieldLinkDepths';
 import { WhereExpression } from './Operators';
 import { serializeOrder } from './QueryTypes';
@@ -10,6 +10,7 @@ export class Query implements ContensisQuery {
     pageSize: number = 20;
     fieldLinkDepths?: FieldLinkDepths = {};
     fields?: string[] = [];
+    aggregations?: QueryAggregations = {};
 
     constructor(...whereExpressions: IExpression[]) {
         if (whereExpressions) {
@@ -18,11 +19,11 @@ export class Query implements ContensisQuery {
     }
 
     toJSON() {
-        let result: any = {};
+        const result: any = {};
         result.pageIndex = this.pageIndex;
         result.pageSize = this.pageSize;
 
-        let orderByDtos = serializeOrder(this.orderBy);
+        const orderByDtos = serializeOrder(this.orderBy);
         if (orderByDtos && orderByDtos.length > 0) {
             result.orderBy = orderByDtos;
         }
@@ -33,7 +34,10 @@ export class Query implements ContensisQuery {
             result.fields = this.fields;
         }
         if (this.fieldLinkDepths && Object.keys(this.fieldLinkDepths).length > 0) {
-          result.fieldLinkDepths = this.fieldLinkDepths;
+            result.fieldLinkDepths = this.fieldLinkDepths;
+        }
+        if (this.aggregations && Object.keys(this.aggregations).length > 0) {
+            result.aggregations = this.aggregations;
         }
 
         return result;

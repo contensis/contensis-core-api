@@ -5,7 +5,7 @@ export * from './ClientGrants';
 export * from './ClientParams';
 export * from './ContentTypeFormat';
 export * from './ContensisClassicGrant';
-export * from './ContensisClassicResfreshTokenGrant';
+export * from './ContensisClassicRefreshTokenGrant';
 export * from './Component';
 export * from './ContentType';
 export * from './Editor';

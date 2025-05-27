@@ -1,8 +1,8 @@
 import { LocalisedString } from './Localised';
-declare type ValidationMessage = {
+type ValidationMessage = {
     message?: LocalisedString;
 };
-declare type ValidationMessageAndValue<T> = ValidationMessage & {
+type ValidationMessageAndValue<T> = ValidationMessage & {
     value: T;
 };
 export interface Validations<TField> {

@@ -1,12 +1,16 @@
 import { ExpressionValueTypeEnum, OperatorTypeEnum } from '..';
 import { FreeTextSearchOperatorTypeEnum } from './FreeTextSearchOperatorType';
 export class ExpressionBase {
+    fieldName;
+    values;
+    operatorName;
+    valueType;
+    _weight = 0;
     constructor(fieldName, values = [], operatorName, valueType) {
         this.fieldName = fieldName;
         this.values = values;
         this.operatorName = operatorName;
         this.valueType = valueType;
-        this._weight = 0;
     }
     addValue(value) {
         this.values[this.values.length] = value;

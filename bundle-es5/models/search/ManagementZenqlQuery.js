@@ -5,6 +5,7 @@ var ManagementZenqlQuery = /** @class */ (function () {
         this.pageSize = 20;
         this.includeArchived = false;
         this.includeDeleted = false;
+        this.aggregations = {};
         this.zenql = zenql;
     }
     ManagementZenqlQuery.prototype.toJSON = function () {
@@ -14,6 +15,8 @@ var ManagementZenqlQuery = /** @class */ (function () {
         result.zenql = this.zenql;
         result.includeArchived = this.includeArchived;
         result.includeDeleted = this.includeDeleted;
+        if (Object.keys(this.aggregations || {}).length)
+            result.aggregations = this.aggregations;
         return result;
     };
     return ManagementZenqlQuery;

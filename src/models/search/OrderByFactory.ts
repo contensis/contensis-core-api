@@ -1,5 +1,5 @@
 import { ContensisQueryOrderBy } from '..';
-import { Ordering } from "./Ordering";
+import { Ordering } from './Ordering';
 
 export class OrderByFactory implements ContensisQueryOrderBy {
     asc(fieldName: string): ContensisQueryOrderBy {
