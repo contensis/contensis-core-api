@@ -1,3 +1,4 @@
+import { ContentTypeFormat } from './ContentTypeFormat';
 import { LocalisedString } from './Localised';
 type ValidationMessage = {
     message?: LocalisedString;
@@ -41,6 +42,12 @@ export interface Validations<TField> {
     altTextRequired?: ValidationMessage;
     allowedFieldTypes?: ValidationMessage & {
         fields: TField[];
+    };
+    allowedDataFormats?: ValidationMessage & {
+        dataFormats: Exclude<ContentTypeFormat[], 'component'>;
+    };
+    allowedIds?: ValidationMessage & {
+        ids: string[];
     };
 }
 export {};

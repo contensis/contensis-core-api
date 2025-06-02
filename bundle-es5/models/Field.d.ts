@@ -29,6 +29,8 @@ type FieldDataFormatMap<T> = {
     'quote': T;
     'taxonomy': T;
     'component': T;
+    'contenttype': T;
+    'tag': T;
 };
 export type FieldDataType = keyof FieldDataTypeMap<any>;
 export type FieldDataFormat = keyof FieldDataFormatMap<any> | string;
