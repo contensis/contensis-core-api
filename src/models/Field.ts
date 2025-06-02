@@ -30,12 +30,14 @@ type FieldDataFormatMap<T> = {
     'markdown': T,
     'quote': T,
     'taxonomy': T,
-    'component': T
+    'component': T,
+    'contenttype': T,
+    'tag': T
 };
 
 export type FieldDataType = keyof FieldDataTypeMap<any>;
 
-export type FieldDataFormat = keyof FieldDataFormatMap<any> | string; // `component.${string}`;
+export type FieldDataFormat = keyof FieldDataFormatMap<any> | string; // `component.${string}` or `tag.${string}`;
 
 export interface Field {
     id: string;
