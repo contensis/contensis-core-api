@@ -1,6 +1,6 @@
 {
   "name": "contensis-core-api",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A dependency library used by contensis-delivery-api and contensis-management-api",
   "engines": {
     "node": ">=12"
