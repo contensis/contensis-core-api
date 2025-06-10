@@ -1,6 +1,6 @@
 {
   "name": "contensis-core-api",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A dependency library used by contensis-delivery-api and contensis-management-api",
   "engines": {
     "node": ">=12"
@@ -26,12 +26,12 @@
   },
   "homepage": "https://www.contensis.com/help-and-docs/apis/all-apis",
   "devDependencies": {
-    "@eslint/js": "^9.26.0",
+    "@eslint/js": "^9.28.0",
     "@types/detect-node": "^2.0.2",
-    "@types/node": "^20.17.47",
-    "eslint": "^9.26.0",
+    "@types/node": "^20.17.57",
+    "eslint": "^9.28.0",
     "typescript": "^4.9.5",
-    "typescript-eslint": "^8.32.1"
+    "typescript-eslint": "^8.33.0"
   },
   "dependencies": {
     "detect-node": "^2.1.0",

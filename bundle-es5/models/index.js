@@ -12,6 +12,7 @@ export * from './Editor';
 export * from './Field';
 export * from './IHttpClient';
 export * from './IParamsProvider';
+export * from './Localised';
 export * from './MapperFn';
 export * from './PagedList';
 export * from './PageOptions';
@@ -22,5 +23,6 @@ export * from './search';
 export * from './SysAssetFile';
 export * from './UrlFn';
 export * from './VersionInfo';
+export * from './VersionInfoBase';
 export * from './VersionStatus';
 //# sourceMappingURL=index.js.map
