@@ -52,4 +52,44 @@ export var defaultMapperForPublishedVersionStatus = function (value, options, pa
 export var defaultMapperForLatestVersionStatus = function (value, options, params) {
     return (value === 'latest') ? null : value;
 };
+/**
+ * Prevent users from unintentionally providing date values with seconds or milliseconds that break request caching.
+ * For each top-level entry in the `values` array that is a Date object or a string
+ * that can be parsed as a date, the value is normalized according to `timePrecision`:
+ * - `'minutes'`: seconds and milliseconds are set to 0.
+ * - `'seconds'`: seconds are preserved and milliseconds are set to 0.
+ * - `'exact'`: the original value is preserved unchanged.
+ * @param values - array of values provided to the query operator; each top-level Date or date-like string will be transformed
+ * @param timePrecision - controls how precisely time information is preserved: `'minutes'`, `'seconds'`, or `'exact'`
+ */
+export var fixDates = function (values, timePrecision) {
+    if (timePrecision === 'exact')
+        return values;
+    try {
+        return values.map(function (value) {
+            var fixDate = value instanceof Date
+                ? value
+                : ((isString(value) && !isNaN(Date.parse(value)))
+                    ? new Date(value) : null);
+            if (!fixDate)
+                return value;
+            // Preserve timezone by manipulating UTC fields
+            var year = fixDate.getUTCFullYear();
+            var month = fixDate.getUTCMonth();
+            var date = fixDate.getUTCDate();
+            var hours = fixDate.getUTCHours();
+            var minutes = fixDate.getUTCMinutes();
+            var seconds = timePrecision === 'minutes' ? 0 : fixDate.getUTCSeconds();
+            var ms = (timePrecision === 'minutes' || timePrecision === 'seconds')
+                ? 0 : fixDate.getUTCMilliseconds();
+            return new Date(Date.UTC(year, month, date, hours, minutes, seconds, ms));
+        });
+    }
+    catch (e) {
+        // if any error occurs just return the original values
+        // TODO: remove the console warning after we are confident there are no issues with the date manipulation logic
+        console.warn('fixDates failed', e);
+        return values;
+    }
+};
 //# sourceMappingURL=utils.js.map

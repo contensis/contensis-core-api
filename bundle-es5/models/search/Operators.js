@@ -1,5 +1,7 @@
 import { __extends } from "tslib";
 import { ExpressionValueTypeEnum, OperatorTypeEnum } from '..';
+import { fixDates } from '../../utils';
+import { ExpressionTimePrecisionEnum as TimePrecision } from './ExpressionTimePrecision';
 import { FreeTextSearchOperatorTypeEnum } from './FreeTextSearchOperatorType';
 var ExpressionBase = /** @class */ (function () {
     function ExpressionBase(fieldName, values, operatorName, valueType) {
@@ -105,8 +107,8 @@ var AndExpression = /** @class */ (function (_super) {
 }(LogicalExpression));
 var BetweenExpression = /** @class */ (function (_super) {
     __extends(BetweenExpression, _super);
-    function BetweenExpression(fieldName, minimum, maximum) {
-        return _super.call(this, fieldName, [minimum, maximum], OperatorTypeEnum.Between, ExpressionValueTypeEnum.Array) || this;
+    function BetweenExpression(fieldName, minimum, maximum, timePrecision) {
+        return _super.call(this, fieldName, fixDates([minimum, maximum], timePrecision), OperatorTypeEnum.Between, ExpressionValueTypeEnum.Array) || this;
     }
     return BetweenExpression;
 }(ExpressionBase));
@@ -154,15 +156,15 @@ var FreeTextExpression = /** @class */ (function (_super) {
 }(ExpressionBase));
 var GreaterThanExpression = /** @class */ (function (_super) {
     __extends(GreaterThanExpression, _super);
-    function GreaterThanExpression(fieldName, value) {
-        return _super.call(this, fieldName, [value], OperatorTypeEnum.GreaterThan, ExpressionValueTypeEnum.Single) || this;
+    function GreaterThanExpression(fieldName, value, timePrecision) {
+        return _super.call(this, fieldName, fixDates([value], timePrecision), OperatorTypeEnum.GreaterThan, ExpressionValueTypeEnum.Single) || this;
     }
     return GreaterThanExpression;
 }(ExpressionBase));
 var GreaterThanOrEqualToExpression = /** @class */ (function (_super) {
     __extends(GreaterThanOrEqualToExpression, _super);
-    function GreaterThanOrEqualToExpression(fieldName, value) {
-        return _super.call(this, fieldName, [value], OperatorTypeEnum.GreaterThanOrEqualTo, ExpressionValueTypeEnum.Single) || this;
+    function GreaterThanOrEqualToExpression(fieldName, value, timePrecision) {
+        return _super.call(this, fieldName, fixDates([value], timePrecision), OperatorTypeEnum.GreaterThanOrEqualTo, ExpressionValueTypeEnum.Single) || this;
     }
     return GreaterThanOrEqualToExpression;
 }(ExpressionBase));
@@ -175,15 +177,15 @@ var InExpression = /** @class */ (function (_super) {
 }(ExpressionBase));
 var LessThanExpression = /** @class */ (function (_super) {
     __extends(LessThanExpression, _super);
-    function LessThanExpression(fieldName, value) {
-        return _super.call(this, fieldName, [value], OperatorTypeEnum.LessThan, ExpressionValueTypeEnum.Single) || this;
+    function LessThanExpression(fieldName, value, timePrecision) {
+        return _super.call(this, fieldName, fixDates([value], timePrecision), OperatorTypeEnum.LessThan, ExpressionValueTypeEnum.Single) || this;
     }
     return LessThanExpression;
 }(ExpressionBase));
 var LessThanOrEqualToExpression = /** @class */ (function (_super) {
     __extends(LessThanOrEqualToExpression, _super);
-    function LessThanOrEqualToExpression(fieldName, value) {
-        return _super.call(this, fieldName, [value], OperatorTypeEnum.LessThanOrEqualTo, ExpressionValueTypeEnum.Single) || this;
+    function LessThanOrEqualToExpression(fieldName, value, timePrecision) {
+        return _super.call(this, fieldName, fixDates([value], timePrecision), OperatorTypeEnum.LessThanOrEqualTo, ExpressionValueTypeEnum.Single) || this;
     }
     return LessThanOrEqualToExpression;
 }(ExpressionBase));
@@ -231,8 +233,9 @@ var Operators = /** @class */ (function () {
         }
         return new AndExpression(values);
     };
-    Operators.prototype.between = function (name, minimum, maximum) {
-        return new BetweenExpression(name, minimum, maximum);
+    Operators.prototype.between = function (name, minimum, maximum, timePrecision) {
+        if (timePrecision === void 0) { timePrecision = TimePrecision.Minutes; }
+        return new BetweenExpression(name, minimum, maximum, timePrecision);
     };
     Operators.prototype.contains = function (name, value) {
         return new ContainsExpression(name, value);
@@ -254,11 +257,13 @@ var Operators = /** @class */ (function () {
         if (operator === void 0) { operator = FreeTextSearchOperatorTypeEnum.And; }
         return new FreeTextExpression(name, { term: term, fuzzy: fuzzy, operator: operator });
     };
-    Operators.prototype.greaterThan = function (name, value) {
-        return new GreaterThanExpression(name, value);
+    Operators.prototype.greaterThan = function (name, value, timePrecision) {
+        if (timePrecision === void 0) { timePrecision = TimePrecision.Minutes; }
+        return new GreaterThanExpression(name, value, timePrecision);
     };
-    Operators.prototype.greaterThanOrEqualTo = function (name, value) {
-        return new GreaterThanOrEqualToExpression(name, value);
+    Operators.prototype.greaterThanOrEqualTo = function (name, value, timePrecision) {
+        if (timePrecision === void 0) { timePrecision = TimePrecision.Minutes; }
+        return new GreaterThanOrEqualToExpression(name, value, timePrecision);
     };
     Operators.prototype.in = function (name) {
         var values = [];
@@ -267,11 +272,13 @@ var Operators = /** @class */ (function () {
         }
         return new InExpression(name, values);
     };
-    Operators.prototype.lessThan = function (name, value) {
-        return new LessThanExpression(name, value);
+    Operators.prototype.lessThan = function (name, value, timePrecision) {
+        if (timePrecision === void 0) { timePrecision = TimePrecision.Minutes; }
+        return new LessThanExpression(name, value, timePrecision);
     };
-    Operators.prototype.lessThanOrEqualTo = function (name, value) {
-        return new LessThanOrEqualToExpression(name, value);
+    Operators.prototype.lessThanOrEqualTo = function (name, value, timePrecision) {
+        if (timePrecision === void 0) { timePrecision = TimePrecision.Minutes; }
+        return new LessThanOrEqualToExpression(name, value, timePrecision);
     };
     Operators.prototype.not = function (expression) {
         return new NotExpression(expression);
