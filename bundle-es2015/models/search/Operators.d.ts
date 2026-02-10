@@ -1,4 +1,5 @@
 import { ContensisQueryOperators, ExpressionValueType, IExpression, ILogicalExpression, OperatorType } from '..';
+import { ExpressionTimePrecision } from './ExpressionTimePrecision';
 import { FreeTextSearchOperatorType } from './FreeTextSearchOperatorType';
 export declare abstract class ExpressionBase implements IExpression {
     fieldName: string;
@@ -31,18 +32,18 @@ export declare class WhereExpression extends LogicalExpression {
 }
 export declare class Operators implements ContensisQueryOperators {
     and(...values: IExpression[]): ILogicalExpression;
-    between(name: string, minimum: any, maximum: any): IExpression;
+    between(name: string, minimum: any, maximum: any, timePrecision?: ExpressionTimePrecision): IExpression;
     contains(name: string, value: string): IExpression;
     distanceWithin(name: string, lat: number, lon: number, distance: string): IExpression;
     endsWith(name: string, value: string): IExpression;
     equalTo(name: string, value: any): IExpression;
     exists(name: string, value: boolean): IExpression;
     freeText(name: string, term: string, fuzzy?: boolean, operator?: FreeTextSearchOperatorType): IExpression;
-    greaterThan(name: string, value: any): IExpression;
-    greaterThanOrEqualTo(name: string, value: any): IExpression;
+    greaterThan(name: string, value: any, timePrecision?: ExpressionTimePrecision): IExpression;
+    greaterThanOrEqualTo(name: string, value: any, timePrecision?: ExpressionTimePrecision): IExpression;
     in(name: string, ...values: any[]): IExpression;
-    lessThan(name: string, value: any): IExpression;
-    lessThanOrEqualTo(name: string, value: any): IExpression;
+    lessThan(name: string, value: any, timePrecision?: ExpressionTimePrecision): IExpression;
+    lessThanOrEqualTo(name: string, value: any, timePrecision?: ExpressionTimePrecision): IExpression;
     not(expression: IExpression): ILogicalExpression;
     or(...values: IExpression[]): ILogicalExpression;
     startsWith(name: string, value: string): IExpression;
