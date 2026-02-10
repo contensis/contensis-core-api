@@ -1,5 +1,7 @@
 import { ContensisQueryOperators, ExpressionValueType, ExpressionValueTypeEnum, IExpression, ILogicalExpression, OperatorType, OperatorTypeEnum } from '..';
+import { fixDates } from '../../utils';
 import { DistanceSearch } from './DistanceSearch';
+import { ExpressionTimePrecision, ExpressionTimePrecisionEnum as TimePrecision } from './ExpressionTimePrecision';
 import { FreeTextSearch } from './FreeTextSearch';
 import { FreeTextSearchOperatorType, FreeTextSearchOperatorTypeEnum } from './FreeTextSearchOperatorType';
 
@@ -110,8 +112,8 @@ class AndExpression extends LogicalExpression {
     }
 }
 class BetweenExpression extends ExpressionBase {
-    constructor(fieldName: string, minimum: any, maximum: any) {
-        super(fieldName, [minimum, maximum], OperatorTypeEnum.Between, ExpressionValueTypeEnum.Array);
+    constructor(fieldName: string, minimum: any, maximum: any, timePrecision: ExpressionTimePrecision) {
+        super(fieldName, fixDates([minimum, maximum], timePrecision), OperatorTypeEnum.Between, ExpressionValueTypeEnum.Array);
     }
 }
 class ContainsExpression extends ExpressionBase {
@@ -145,13 +147,13 @@ class FreeTextExpression extends ExpressionBase {
     }
 }
 class GreaterThanExpression extends ExpressionBase {
-    constructor(fieldName: string, value: any) {
-        super(fieldName, [value], OperatorTypeEnum.GreaterThan, ExpressionValueTypeEnum.Single);
+    constructor(fieldName: string, value: any, timePrecision: ExpressionTimePrecision) {
+        super(fieldName, fixDates([value], timePrecision), OperatorTypeEnum.GreaterThan, ExpressionValueTypeEnum.Single);
     }
 }
 class GreaterThanOrEqualToExpression extends ExpressionBase {
-    constructor(fieldName: string, value: any) {
-        super(fieldName, [value], OperatorTypeEnum.GreaterThanOrEqualTo, ExpressionValueTypeEnum.Single);
+    constructor(fieldName: string, value: any, timePrecision: ExpressionTimePrecision) {
+        super(fieldName, fixDates([value], timePrecision), OperatorTypeEnum.GreaterThanOrEqualTo, ExpressionValueTypeEnum.Single);
     }
 }
 class InExpression extends ExpressionBase {
@@ -160,13 +162,13 @@ class InExpression extends ExpressionBase {
     }
 }
 class LessThanExpression extends ExpressionBase {
-    constructor(fieldName: string, value: any) {
-        super(fieldName, [value], OperatorTypeEnum.LessThan, ExpressionValueTypeEnum.Single);
+    constructor(fieldName: string, value: any, timePrecision: ExpressionTimePrecision) {
+        super(fieldName, fixDates([value], timePrecision), OperatorTypeEnum.LessThan, ExpressionValueTypeEnum.Single);
     }
 }
 class LessThanOrEqualToExpression extends ExpressionBase {
-    constructor(fieldName: string, value: any) {
-        super(fieldName, [value], OperatorTypeEnum.LessThanOrEqualTo, ExpressionValueTypeEnum.Single);
+    constructor(fieldName: string, value: any, timePrecision: ExpressionTimePrecision) {
+        super(fieldName, fixDates([value], timePrecision), OperatorTypeEnum.LessThanOrEqualTo, ExpressionValueTypeEnum.Single);
     }
 }
 class NotExpression extends LogicalExpression {
@@ -201,8 +203,8 @@ export class Operators implements ContensisQueryOperators {
         return new AndExpression(values);
     }
 
-    between(name: string, minimum: any, maximum: any): IExpression {
-        return new BetweenExpression(name, minimum, maximum);
+    between(name: string, minimum: any, maximum: any, timePrecision: ExpressionTimePrecision = TimePrecision.Minutes): IExpression {
+        return new BetweenExpression(name, minimum, maximum, timePrecision);
     }
 
     contains(name: string, value: string): IExpression {
@@ -229,24 +231,24 @@ export class Operators implements ContensisQueryOperators {
         return new FreeTextExpression(name, { term, fuzzy, operator });
     }
 
-    greaterThan(name: string, value: any): IExpression {
-        return new GreaterThanExpression(name, value);
+    greaterThan(name: string, value: any, timePrecision: ExpressionTimePrecision = TimePrecision.Minutes): IExpression {
+        return new GreaterThanExpression(name, value, timePrecision);
     }
 
-    greaterThanOrEqualTo(name: string, value: any): IExpression {
-        return new GreaterThanOrEqualToExpression(name, value);
+    greaterThanOrEqualTo(name: string, value: any, timePrecision: ExpressionTimePrecision = TimePrecision.Minutes): IExpression {
+        return new GreaterThanOrEqualToExpression(name, value, timePrecision);
     }
 
     in(name: string, ...values: any[]): IExpression {
         return new InExpression(name, values);
     }
 
-    lessThan(name: string, value: any): IExpression {
-        return new LessThanExpression(name, value);
+    lessThan(name: string, value: any, timePrecision: ExpressionTimePrecision = TimePrecision.Minutes): IExpression {
+        return new LessThanExpression(name, value, timePrecision);
     }
 
-    lessThanOrEqualTo(name: string, value: any): IExpression {
-        return new LessThanOrEqualToExpression(name, value);
+    lessThanOrEqualTo(name: string, value: any, timePrecision: ExpressionTimePrecision = TimePrecision.Minutes): IExpression {
+        return new LessThanOrEqualToExpression(name, value, timePrecision);
     }
 
     not(expression: IExpression): ILogicalExpression {
