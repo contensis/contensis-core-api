@@ -1,6 +1,6 @@
-import { MapperFn, ClientParams, VersionStatus } from './models';
+import type { MapperFn, ClientParams, VersionStatus } from './models';
 import * as isNode from 'detect-node';
-import { ExpressionTimePrecision } from './models/search/ExpressionTimePrecision';
+import type { ExpressionTimePrecision } from './models/search/ExpressionTimePrecision';
 
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
@@ -66,10 +66,11 @@ export let defaultMapperForLatestVersionStatus: MapperFn = (value: string, optio
 	(value as VersionStatus === 'latest') ? null : value;
 
 /**
- * Prevent users from unintentionally providing date values with seconds or milliseconds that break request caching
- * Examine the provided value for any Date objects or strings that can be parsed as dates
- * and zero the seconds and milliseconds from the value if timePrecision is not set to 'exact'
- * @param values - the value provided to the query operator that may contain dates that need to be transformed
+ * Prevent users from unintentionally providing date values with seconds or milliseconds that break request caching.
+ * For each top-level entry in the `values` array that is a Date object or a string
+ * that can be parsed as a date, zero the seconds and milliseconds from the value if timePrecision
+ * is not set to 'exact'.
+ * @param values - array of values provided to the query operator; each top-level Date or date-like string will be transformed
  * @param timePrecision - if set to 'minutes' or 'seconds' the relevant parts of the date will be set to 0
  */
 export const fixDates = (values: any[], timePrecision: ExpressionTimePrecision) => {
@@ -81,23 +82,23 @@ export const fixDates = (values: any[], timePrecision: ExpressionTimePrecision) 
 				? value
 				: ((isString(value) && !isNaN(Date.parse(value)))
 					? new Date(value) : null);
+			if (!fixDate) return value;
 
-			if (fixDate instanceof Date) {
-				// Preserve timezone by manipulating UTC fields
-				const year = fixDate.getUTCFullYear();
-				const month = fixDate.getUTCMonth();
-				const date = fixDate.getUTCDate();
-				const hours = fixDate.getUTCHours();
-				const minutes = fixDate.getUTCMinutes();
-				const seconds = timePrecision === 'minutes' ? 0 : fixDate.getUTCSeconds();
-				const ms = (timePrecision === 'minutes' || timePrecision === 'seconds')
-					? 0 : fixDate.getUTCMilliseconds();
+			// Preserve timezone by manipulating UTC fields
+			const year = fixDate.getUTCFullYear();
+			const month = fixDate.getUTCMonth();
+			const date = fixDate.getUTCDate();
+			const hours = fixDate.getUTCHours();
+			const minutes = fixDate.getUTCMinutes();
+			const seconds = timePrecision === 'minutes' ? 0 : fixDate.getUTCSeconds();
+			const ms = (timePrecision === 'minutes' || timePrecision === 'seconds')
+				? 0 : fixDate.getUTCMilliseconds();
 
-				return new Date(Date.UTC(year, month, date, hours, minutes, seconds, ms));
-			}
+			return new Date(Date.UTC(year, month, date, hours, minutes, seconds, ms));
 		});
 	} catch (e: any) {
 		// if any error occurs just return the original values
+		// TODO: remove the console warning after we are confident there are no issues with the date manipulation logic
 		console.warn('fixDates failed', e);
 		return values;
 	}
