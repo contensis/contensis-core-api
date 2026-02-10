@@ -68,10 +68,12 @@ export let defaultMapperForLatestVersionStatus: MapperFn = (value: string, optio
 /**
  * Prevent users from unintentionally providing date values with seconds or milliseconds that break request caching.
  * For each top-level entry in the `values` array that is a Date object or a string
- * that can be parsed as a date, zero the seconds and milliseconds from the value if timePrecision
- * is not set to 'exact'.
+ * that can be parsed as a date, the value is normalized according to `timePrecision`:
+ * - `'minutes'`: seconds and milliseconds are set to 0.
+ * - `'seconds'`: seconds are preserved and milliseconds are set to 0.
+ * - `'exact'`: the original value is preserved unchanged.
  * @param values - array of values provided to the query operator; each top-level Date or date-like string will be transformed
- * @param timePrecision - if set to 'minutes' or 'seconds' the relevant parts of the date will be set to 0
+ * @param timePrecision - controls how precisely time information is preserved: `'minutes'`, `'seconds'`, or `'exact'`
  */
 export const fixDates = (values: any[], timePrecision: ExpressionTimePrecision) => {
 	if (timePrecision === 'exact') return values;
