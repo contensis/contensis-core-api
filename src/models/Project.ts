@@ -5,4 +5,5 @@ export interface Project {
 	primaryLanguage: string;
 	supportedLanguages: string[];
 	deliverySysExclusions: string[];
+	color: string;
 }
