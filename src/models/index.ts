@@ -22,6 +22,7 @@ export * from './ResponseHandler';
 export * from './search';
 export * from './SysAssetFile';
 export * from './UrlFn';
+export * from './Validations';
 export * from './VersionInfo';
 export * from './VersionInfoBase';
 export * from './VersionStatus';
