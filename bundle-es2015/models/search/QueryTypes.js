@@ -26,7 +26,7 @@ export function serializeOrder(orderBy) {
         return !!o ? [o] : [];
     }
     if (Array.isArray(orderBy)) {
-        return orderBy.map(toOrderByDto).filter(o => !!o);
+        return orderBy.map(toOrderByDto).filter((o) => !!o);
     }
     let orderByAsOrdering = orderBy instanceof Ordering ? orderBy : null;
     if (orderByAsOrdering === null) {

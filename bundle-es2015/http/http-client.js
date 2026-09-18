@@ -30,7 +30,7 @@ export class HttpClient {
         if (!!params.defaultHeaders) {
             const keys = Object.keys(params.defaultHeaders);
             keys.forEach(key => {
-                if (!headers[key] && !!params.defaultHeaders[key]) {
+                if (!headers[key] && !!params.defaultHeaders?.[key]) {
                     headers[key] = params.defaultHeaders[key];
                 }
             });

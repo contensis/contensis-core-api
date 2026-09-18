@@ -49,6 +49,7 @@ var LogicalExpression = /** @class */ (function (_super) {
     __extends(LogicalExpression, _super);
     function LogicalExpression(values, operatorName, valueType) {
         if (values === void 0) { values = []; }
+        // Logical expressions have no fieldName; unknown cast lets us keep `fieldName: string` in IExpression.
         return _super.call(this, null, values, operatorName, ExpressionValueTypeEnum.Array) || this;
     }
     LogicalExpression.prototype.getItem = function (index) {

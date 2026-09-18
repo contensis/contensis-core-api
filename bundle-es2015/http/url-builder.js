@@ -6,14 +6,14 @@ export class UrlBuilder {
     options = {};
     clientParams;
     mappers = {};
-    static create(url, query = null) {
+    static create(url, query = {}) {
         return new UrlBuilder(url, query);
     }
     constructor(url, query) {
         this.url = url;
         this.query = query;
     }
-    addOptions(options, defaultParamName = null) {
+    addOptions(options, defaultParamName) {
         if (isString(options) && !!defaultParamName) {
             this.options[defaultParamName] = options;
         }
@@ -47,7 +47,7 @@ export class UrlBuilder {
                     value = this.options[key];
                 }
                 else if (hasProp(this.clientParams, key)
-                    && this.clientParams[key] !== null) {
+                    && this.clientParams?.[key] !== null) {
                     value = this.clientParams[key];
                 }
                 let mapperValue = null;
