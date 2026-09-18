@@ -8,7 +8,7 @@ export const Op = new Operators();
 
 export const OrderBy: ContensisQueryOrderBy = new OrderByFactory();
 
-function toOrderByDto(value: string | ContensisQueryOrderByDto): ContensisQueryOrderByDto {
+function toOrderByDto(value: string | ContensisQueryOrderByDto): ContensisQueryOrderByDto | null {
     if (!value) {
         return null;
     }
@@ -36,7 +36,7 @@ export function serializeOrder(orderBy: string | string[] | ContensisQueryOrderB
     }
 
     if (Array.isArray(orderBy)) {
-        return (orderBy as any).map(toOrderByDto).filter(o => !!o);
+        return (orderBy as any).map(toOrderByDto).filter((o: ContensisQueryOrderByDto | null): o is ContensisQueryOrderByDto => !!o);
     }
 
     let orderByAsOrdering = orderBy instanceof Ordering ? orderBy as Ordering : null;

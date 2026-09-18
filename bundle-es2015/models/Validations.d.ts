@@ -6,6 +6,10 @@ type ValidationMessage = {
 type ValidationMessageAndValue<T> = ValidationMessage & {
     value: T;
 };
+export interface LabeledValue {
+    value: string;
+    label: LocalisedString;
+}
 export interface Validations<TField> {
     required?: ValidationMessage;
     min?: ValidationMessageAndValue<number>;
@@ -18,7 +22,20 @@ export interface Validations<TField> {
         pattern: string;
     };
     allowedValues?: ValidationMessage & {
-        values: LocalisedString[];
+        values?: LocalisedString[];
+        labeledValues?: LabeledValue[];
+    };
+    /** Field `dataFormat: "canvas"` */
+    allowedTypes?: ValidationMessage & {
+        types?: Array<{
+            type: string;
+            decorators?: {
+                allowed?: Array<{
+                    decorator: string;
+                }>;
+                [key: string]: unknown;
+            };
+        }>;
     };
     taxonomyRoot?: ValidationMessage & {
         key: string;
@@ -28,6 +45,11 @@ export interface Validations<TField> {
     };
     allowedContentTypes?: ValidationMessage & {
         contentTypes: string[];
+    };
+    /** Field `dataFormat: "node"` */
+    allowedAncestorNodeId?: ValidationMessage & {
+        nodeId: string;
+        restrictionType?: string;
     };
     pastDateTime?: ValidationMessage;
     decimalPlaces?: ValidationMessageAndValue<number>;

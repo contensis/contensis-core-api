@@ -1,9 +1,9 @@
 import { IExpression } from './IExpression';
 export interface ILogicalExpression extends IExpression {
     getItem(index: number): IExpression;
-    setItem(index: number, item: IExpression): any;
+    setItem(index: number, item: IExpression): void;
     add(item: IExpression): void;
-    addRange(items: IExpression[]): any;
+    addRange(items: IExpression[]): void;
     indexOf(item: IExpression): number;
     insert(index: number, item: IExpression): void;
     remove(item: IExpression): boolean;

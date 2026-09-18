@@ -47,6 +47,7 @@ export class ExpressionBase {
 }
 export class LogicalExpression extends ExpressionBase {
     constructor(values = [], operatorName, valueType) {
+        // Logical expressions have no fieldName; unknown cast lets us keep `fieldName: string` in IExpression.
         super(null, values, operatorName, ExpressionValueTypeEnum.Array);
     }
     getItem(index) {

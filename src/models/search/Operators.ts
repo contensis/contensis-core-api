@@ -46,7 +46,8 @@ export abstract class ExpressionBase implements IExpression {
 
 export abstract class LogicalExpression extends ExpressionBase implements ILogicalExpression {
     constructor(values: any[] = [], operatorName: OperatorType, valueType: ExpressionValueType) {
-        super(null, values, operatorName, ExpressionValueTypeEnum.Array);
+        // Logical expressions have no fieldName; unknown cast lets us keep `fieldName: string` in IExpression.
+        super(null as unknown as string, values, operatorName, ExpressionValueTypeEnum.Array);
     }
 
     getItem(index: number): IExpression {

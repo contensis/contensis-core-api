@@ -5,17 +5,17 @@ export class UrlBuilder {
 
 	private paramMatcher = /(:\b\D\w*)/g;
 	private options: any = {};
-	private clientParams: ClientParams;
+	private clientParams!: ClientParams;
 	private mappers: { [key: string]: MapperFn } = {};
 
-	static create(url: string | UrlFn, query: { [key: string]: any } = null) {
+	static create(url: string | UrlFn, query: { [key: string]: any } = {}) {
 		return new UrlBuilder(url, query);
 	}
 
 	constructor(private url: string | UrlFn, private query: { [key: string]: any }) {
 	}
 
-	addOptions(options: any, defaultParamName: string = null) {
+	addOptions(options: any, defaultParamName?: string) {
 		if (isString(options) && !!defaultParamName) {
 			this.options[defaultParamName] = options;
 		} else {
@@ -51,7 +51,7 @@ export class UrlBuilder {
 					&& this.options[key] !== null) {
 					value = this.options[key];
 				} else if (hasProp(this.clientParams, key)
-					&& this.clientParams[key] !== null) {
+					&& this.clientParams?.[key] !== null) {
 					value = this.clientParams[key];
 				}
 
