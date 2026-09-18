@@ -38,7 +38,7 @@ export class HttpClient implements IHttpClient {
 		if (!!params.defaultHeaders) {
 			const keys = Object.keys(params.defaultHeaders);
 			keys.forEach(key => {
-				if (!headers[key] && !!params.defaultHeaders[key]) {
+				if (!headers[key] && !!params.defaultHeaders?.[key]) {
 					headers[key] = params.defaultHeaders[key];
 				}
 			});
@@ -47,7 +47,7 @@ export class HttpClient implements IHttpClient {
 		const requestUrl = isRelativeRequestUrl ? `${url}` : `${params.rootUrl}${url}`;
 		return this.fetchFn(requestUrl, request)
 			.then((response) => {
-				let responseHandlerFunction: ResponseHandlerFunction = null;
+				let responseHandlerFunction: ResponseHandlerFunction | null = null;
 				if (!!params.responseHandler) {
 					if (!!params.responseHandler['*']) {
 						responseHandlerFunction = params.responseHandler['*'];
