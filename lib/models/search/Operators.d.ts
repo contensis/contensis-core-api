@@ -15,14 +15,14 @@ export declare abstract class ExpressionBase implements IExpression {
 export declare abstract class LogicalExpression extends ExpressionBase implements ILogicalExpression {
     constructor(values: any[], operatorName: OperatorType, valueType: ExpressionValueType);
     getItem(index: number): IExpression;
-    setItem(index: number, item: IExpression): WhereExpression;
-    add(item: IExpression): WhereExpression;
-    addRange(items: IExpression[]): WhereExpression;
+    setItem(index: number, item: IExpression): this;
+    add(item: IExpression): this;
+    addRange(items: IExpression[]): this;
     indexOf(item: IExpression): number;
-    insert(index: number, item: IExpression): WhereExpression;
+    insert(index: number, item: IExpression): this;
     remove(item: IExpression): boolean;
-    removeAt(index: number): WhereExpression;
-    clear(): WhereExpression;
+    removeAt(index: number): this;
+    clear(): this;
     contains(item: IExpression): boolean;
     count(): number;
 }
