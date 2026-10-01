@@ -54,17 +54,17 @@ export abstract class LogicalExpression extends ExpressionBase implements ILogic
         return this.values[index];
     }
 
-    setItem(index: number, item: IExpression): WhereExpression {
+    setItem(index: number, item: IExpression): this {
         this.values[index] = item;
         return this;
     }
 
-    add(item: IExpression): WhereExpression {
+    add(item: IExpression): this {
         this.values[this.values.length] = item;
         return this;
     }
 
-    addRange(items: IExpression[]): WhereExpression {
+    addRange(items: IExpression[]): this {
         Array.prototype.push.apply(this.values, items);
         return this;
     }
@@ -73,7 +73,7 @@ export abstract class LogicalExpression extends ExpressionBase implements ILogic
         return this.values.indexOf(item);
     }
 
-    insert(index: number, item: IExpression): WhereExpression {
+    insert(index: number, item: IExpression): this {
         this.values.splice(index, 0, item);
         return this;
     }
@@ -87,12 +87,12 @@ export abstract class LogicalExpression extends ExpressionBase implements ILogic
         return false;
     }
 
-    removeAt(index: number): WhereExpression {
+    removeAt(index: number): this {
         this.values.splice(index, 1);
         return this;
     }
 
-    clear(): WhereExpression {
+    clear(): this {
         this.values.length = 0;
         return this;
     }
