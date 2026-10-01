@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.4] - 2026-10-01
 ### Added
-- Missing *entryThumnailField* field in *ContentType*
+- Missing *entryThumbnailField* field in *ContentType*
 - Enhance *Validations* for canvas field types
 
 ## [1.2.3] - 2026-09-18
